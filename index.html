@@ -1,6 +1,7 @@
 <?php
 	$css = "css/style.css?" . filemtime("css/style.css");
 	$js = "js/custom.js?" . filemtime("js/custom.js");
+	$lineData = "js/metroLineData.js?" . filemtime("js/metroLineData.js");
 ?>
 
 <!doctype html>
@@ -159,12 +160,40 @@
 							<p>컨퍼런스에서 나타난 네트워크가 문재인 정부 전반에 얼마나 실재하는지 확인하기 위해 조사 대상 범위를 넓혀봤다. </p>
 							<p>대상자는 학자 출신으로 문재인 정부에 참여한 전·현직 청와대 수석비서관과 장관, 26곳 국책연구기관장 등 총 70명이다.</p>
 						</div>
-
-					
-
 						<div class="para-holder">
 							<p>대상 인물들의 저술 활동을 수집하고, 전체 논문·저술 공저자 목록을 뽑았다.</p>
 							<p><b>70명과 연관된 저술 2217개, 공저자 4101명이 집계됐다.</b> 이들 중 정부 정책 결정 과정에 참여한 학자들을 확인하기 위해 대통령 직속 위원회 등 각종 위원회 참가 경력이 있는 인물을 추렸다. </p>
+						</div>
+
+						<div class="graph-holder">
+							<div class="btn-holder metro-btn" id="METRO_BTN">
+								<ul>
+									<li class="btn_line_1" data-id="s_1">1호선</li>
+									<li class="btn_line_2" data-id="s_2">2호선</li>
+									<li class="btn_line_3" data-id="s_3">3호선</li>
+									<li class="btn_line_4" data-id="s_4">4호선</li>
+									<li class="btn_line_5" data-id="s_5">5호선</li>
+									<li class="btn_line_6" data-id="s_6">6호선</li>
+									<li class="btn_line_7" data-id="s_7">7호선</li>
+									<li class="btn_line_8" data-id="s_8">8호선</li>
+									<li class="btn_line_9" data-id="s_9">9호선</li>
+		
+								</ul>
+							</div>
+							<div class="path-draw-canvas">
+								<div class="" id="path-start-deco">
+									<div class="pillow"></div>
+									<div class="number-box">
+										<p>?</p>
+									</div>
+									<div class="pillow-shadow"></div>
+								</div>
+								<svg id="PATH">
+								
+								</svg>	
+							</div>
+							
+
 						</div>
 					</div>
 				</div>
@@ -300,12 +329,8 @@
 
 	</div>
 
-	<script type="text/javascript" src="<?php echo $confNet; ?>"></script>
-	<script type="text/javascript" src="<?php echo $mainNet; ?>"></script>
-	<script type="text/javascript" src="<?php echo $crawPerson; ?>"></script>
-	<script type="text/javascript" src="js/finalPersonList.js"></script>
-
 	<script type="text/javascript" src="<?php echo $js; ?>"></script>
+	<script type="text/javascript" src="<?php echo $lineData; ?>"></script>
 
 	<!-- imp 2021.07 YJ 추가
 	 <SCRIPT type="text/javaSCRIPT">

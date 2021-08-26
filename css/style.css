@@ -189,7 +189,60 @@ font-size: 80px;line-height: 120px;color: #222; font-weight: 600; font-weight: 6
 .top-byline .top-border p a { color:#222; }
 .top-byline .top-border p a:hover {text-decoration: underline;}
 
+.graph-holder {  position: relative; }
+.metro-btn { max-width: 850px; position: absolute; top:0;left:50%; margin-left:-300px;z-index:2; }
+.metro-btn ul  { position: relative; text-align: center;}
+.metro-btn ul li  { display: inline-block; box-sizing:border-box; padding: 4px 10px; background: #2d2b3b;color: #ddd; font-family: 'Noto Sans KR'; font-size: 16px; cursor: pointer;
+border-radius: 4px;margin: 0px 2px;border: 1px solid #111;opacity: 0.7;}
+.metro-btn ul li:hover { opacity: 1; box-shadow: 2px 2px 7px rgba(0,0,0,0.3);}
+.metro-btn ul li.on { background:#111; opacity:1; color:#fff; }
+.path-draw-canvas{max-width: 1000px; margin: 0px auto;  }
+.path-draw-canvas > div {position: relative;left: -7px;}
+.path-draw-canvas > div > .pillow { width: 15px; height:150px; background:#111; }
+.path-draw-canvas > div > .number-box {position: absolute; 
+bottom: 0px; left: -24px;width: 60px;height: 60px;background: #fff; border: 5px solid #111; box-sizing: border-box; line-height: 50px; border-radius: 10px;}
+.path-draw-canvas > div > .number-box p {text-align:center; font-weight: bold; font-size: 20px; }
+.path-draw-canvas > div > .pillow-shadow {width: 50px; height: 100px; position:absolute;top:0;left:0;
+background: linear-gradient(0deg, rgba(255,255,255,0), rgba(255,255,255,1));}
+.path-draw-canvas .deco01 .number-box  {border: 5px solid #0a3190; }
+.path-draw-canvas .deco02 .number-box  {border: 5px solid #00a547; }
+.path-draw-canvas .deco03 .number-box  {border: 5px solid #f08300;}
+.path-draw-canvas .deco04 .number-box  {border: 5px solid #00a1e9;}
+.path-draw-canvas .deco05 .number-box  {border: 5px solid #a54a9a;}
+.path-draw-canvas .deco06 .number-box  {border: 5px solid #d08e1d;}
+.path-draw-canvas .deco07 .number-box  {border: 5px solid #657536;}
+.path-draw-canvas .deco08 .number-box  {border: 5px solid #e9506f;}
+.path-draw-canvas .deco09 .number-box  {border: 5px solid #c49b26;}
+.path-draw-canvas .deco01 .pillow {background: #0a3190; }
+.path-draw-canvas .deco02 .pillow {background: #00a547; }
+.path-draw-canvas .deco03 .pillow {background: #f08300; }
+.path-draw-canvas .deco04 .pillow {background: #00a1e9; }
+.path-draw-canvas .deco05 .pillow {background: #a54a9a; }
+.path-draw-canvas .deco06 .pillow {background: #d08e1d; }
+.path-draw-canvas .deco07 .pillow {background: #657536; }
+.path-draw-canvas .deco08 .pillow {background: #e9506f; }
+.path-draw-canvas .deco09 .pillow {background: #c49b26; }
 
+
+#PATH { display:block; margin: 0 auto; overflow:visible;}
+#PATH .path { stroke:#111; stroke-width: 15px; fill:none;}
+#PATH .path-line01 { stroke: #0a3190; }
+#PATH .path-line02 { stroke: #00a547;}
+#PATH .path-line03 { stroke: #f08300;}
+#PATH .path-line04 { stroke: #00a1e9; }
+#PATH .path-line05 { stroke: #a54a9a; }
+#PATH .path-line06 { stroke: #d08e1d; }
+#PATH .path-line07 { stroke: #657536; }
+#PATH .path-line08 { stroke: #e9506f; }
+#PATH .path-line09 { stroke: #c49b26;}
+
+#PATH .path-hide-f0 {stroke-dashoffset: 1200; stroke-dasharray: 1200;}
+#PATH .path-hide-f1 {stroke-dashoffset: 1200; stroke-dasharray: 1200;}
+#PATH .path-hide-f2 {stroke-dashoffset: 2400; stroke-dasharray: 2400;}
+#PATH .path-hide-f3 {stroke-dashoffset: 3600; stroke-dasharray: 3600;}
+#PATH .path-hide-f4 {stroke-dashoffset: 4800; stroke-dasharray: 4800;}
+
+.station-circle { r: 8; fill:#333; stroke:#fff; stroke-width:2;}
 
 
 
