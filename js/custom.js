@@ -21,9 +21,10 @@ if(isMobile==true){
 }
 /******** 모바일 전용 조정 ********/
 
-
+var keepLine = 0;
 $(function(){
 	
+
 	var randomRange = function(n1, n2) {
 		return Math.floor((Math.random() * (n2 - n1 + 1)) + n1);
 	};
@@ -63,6 +64,7 @@ $(function(){
     function makePath(line){
         var line = line || 1;
         console.log(line + "호선 그리기")
+        keepLine = line;
         var st_data = new Array; 
         lineData.forEach(function(v,i,a){
             if(v.line == line && v.safe == "X"){
@@ -186,8 +188,43 @@ $(function(){
 	
 	});
 
-});
+    $(".station-name").on("click", function(){
+        $(".crevasse").remove();
+        var stationName = $(this).text();
 
+        var defaultLine = "M 0 5 L 1000 5z";
+        var tempPathObj = document.getElementById("CREVASSE").appendChild(document.createElementNS("http://www.w3.org/2000/svg", "path"));
+        tempPathObj.setAttributeNS(null,"d", defaultLine);
+        tempPathObj.setAttributeNS(null,"class", "crevasse");
+
+        var st_info = new Array; 
+        station_info.forEach(function(v,i,a){
+            var tmpPath = "";
+            if(v.line == keepLine && v.station == stationName) {
+                var count = Object.keys(v["distance(mm)"]).length;
+                var k = 0;
+                for (var key in v["distance(mm)"]) { 
+                    // console.log("key : " + key +", value : " + v["distance(mm)"][key]);
+                    console.log(v["distance(mm)"][key]["distance"]);
+                    if(k==0){
+                        tmpPath = "M 0 " + v["distance(mm)"][key]["distance"];
+                    } else {
+                        tmpPath += " L " + 50*k + " " + v["distance(mm)"][key]["distance"];
+                    }
+                    k++;
+                }
+                var tempPathObj = document.getElementById("CREVASSE").appendChild(document.createElementNS("http://www.w3.org/2000/svg", "path"));
+                tempPathObj.setAttributeNS(null,"d", tmpPath);
+                tempPathObj.setAttributeNS(null,"class", "crevasse");
+            } else {
+                tmpPath ="";
+            }
+            
+        });
+        
+    });
+    
+});
 
 function sendSns(s) {
   var url = encodeURIComponent(location.href),

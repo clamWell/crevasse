@@ -244,8 +244,13 @@ background: linear-gradient(0deg, rgba(255,255,255,0), rgba(255,255,255,1));}
 
 .station-circle { r: 8; fill:#333; stroke:#fff; stroke-width:2;}
 
-
-
+.station-holder {background-color: rgb(223, 232, 243); padding: 50px;}
+.station-info {margin: 0 auto; width: 400px;}
+.name-holder {padding: 10px; border-radius: 15px; border: #0a3190 solid 3px; text-align: center; background-color: white;}
+.station-para {padding: 20px; background-color: white;}
+.station-distance {text-align: center; margin: 20px;}
+.crevasse { stroke-width:1;  stroke: #272727; fill: none;}
+#CREVASSE {width: 1000px; height: 300px;}
 
 /** fixed Navi **/
 .fixed-navi {position: fixed; right: 10px;top: 50%;margin-top: -250px; right: -200px;
