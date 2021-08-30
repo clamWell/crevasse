@@ -201,15 +201,15 @@ $(function(){
         station_info.forEach(function(v,i,a){
             var tmpPath = "";
             if(v.line == keepLine && v.station == stationName) {
-                var count = Object.keys(v["distance(mm)"]).length;
+                var count = Object.keys(v["entrances_up"]).length;
                 var k = 0;
-                for (var key in v["distance(mm)"]) { 
-                    // console.log("key : " + key +", value : " + v["distance(mm)"][key]);
-                    console.log(v["distance(mm)"][key]["distance"]);
+                for (var key in v["entrances_up"]) { 
+                    // console.log("key : " + key +", value : " + v["entrances_up"][key]);
+                    console.log(v["entrances_up"][key]["distance(mm)"]);
                     if(k==0){
-                        tmpPath = "M 0 " + v["distance(mm)"][key]["distance"];
+                        tmpPath = "M 0 " + v["entrances_up"][key]["distance(mm)"];
                     } else {
-                        tmpPath += " L " + 50*k + " " + v["distance(mm)"][key]["distance"];
+                        tmpPath += " L " + 50*k + " " + v["entrances_up"][key]["distance(mm)"];
                     }
                     k++;
                 }
