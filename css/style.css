@@ -294,8 +294,7 @@ background: linear-gradient(0deg, rgba(255,255,255,0), rgba(255,255,255,1));}
 .st-line-8 .station-circle { stroke: #e9506f; }
 .st-line-9 .station-circle { stroke: #c49b26;}
 
-.station-info-holder { width: 100%;  box-sizing: border-box;  padding-top:0; border-top: 3px solid #111;  border-bottom: 3px solid #111;}
- padding-bottom: 50px; display:none;}
+.station-info-holder { width: 100%;  box-sizing: border-box;  padding-top:0; border-top: 3px solid #111;  border-bottom: 3px solid #111; padding-bottom: 50px; display:none;}
 .station-info {margin: 0 auto; width: 400px; position: relative; top: -30px;}
 .name-holder {padding: 10px; border-radius: 15px; border: #111 solid 3px; text-align: center; background-color: white;}
 
