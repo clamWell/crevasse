@@ -252,6 +252,13 @@ $(function(){
 						signPathObj.setAttributeNS(null, "class", "signPath");
 					}
 
+                    if(v["entrances_up"][key]["accidents"] >= 1) {
+                        var accidentObj = document.getElementById("CREVASSE").appendChild(document.createElementNS("http://www.w3.org/2000/svg", "circle"));
+                        accidentObj.setAttributeNS(null,"cx", sang*k);
+                        accidentObj.setAttributeNS(null,"cy", v["entrances_up"][key]["distance(mm)"]);
+                        accidentObj.setAttributeNS(null,"r", "20");
+                        accidentObj.setAttributeNS(null, "class", "accidentCircle");
+                    }
 					k++;
 					
 			

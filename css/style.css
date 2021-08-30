@@ -318,7 +318,7 @@ background: linear-gradient(0deg, rgba(255,255,255,0), rgba(255,255,255,1));}
 .crevasse-line07 { stroke:#657536; }
 .crevasse-line08 { stroke:#e9506f; }
 .crevasse-line09 { stroke:#c49b26; }
-
+.accidentCircle {fill: rgb(255, 0, 0)}
 
 
 /** fixed Navi **/
