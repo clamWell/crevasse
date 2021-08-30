@@ -1416,67 +1416,67 @@ var lineData = [
   },
   {
     "line": 9,
-    "station": "둔촌오륜역",
+    "station": "둔촌오륜",
     "safe": "O"
   },
   {
     "line": 9,
-    "station": "봉은사역",
+    "station": "봉은사",
     "safe": "O"
   },
   {
     "line": 9,
-    "station": "삼성중앙역",
+    "station": "삼성중앙",
     "safe": "X"
   },
   {
     "line": 9,
-    "station": "삼전역",
+    "station": "삼전",
     "safe": "O"
   },
   {
     "line": 9,
-    "station": "석촌고분역",
+    "station": "석촌고분",
     "safe": "O"
   },
   {
     "line": 9,
-    "station": "석촌역",
+    "station": "석촌",
     "safe": "O"
   },
   {
     "line": 9,
-    "station": "선정릉역",
+    "station": "선정릉",
     "safe": "O"
   },
   {
     "line": 9,
-    "station": "송파나루역",
+    "station": "송파나루",
     "safe": "O"
   },
   {
     "line": 9,
-    "station": "언주역",
+    "station": "언주",
     "safe": "X"
   },
   {
     "line": 9,
-    "station": "올림픽공원역",
+    "station": "올림픽공원",
     "safe": "O"
   },
   {
     "line": 9,
-    "station": "종합운동장역",
+    "station": "종합운동장",
     "safe": "O"
   },
   {
     "line": 9,
-    "station": "중앙보훈병원역",
+    "station": "중앙보훈병원",
     "safe": "O"
   },
   {
     "line": 9,
-    "station": "한성백제역",
+    "station": "한성백제",
     "safe": "O"
   }
 ];

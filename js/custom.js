@@ -64,7 +64,7 @@ $(function(){
 		var code; 
 		station_info.forEach(function(v,i,a){
 			if(line ==v.line &&station== v.station ){
-				console.log(v.id);
+				//console.log(v.id);
 				code = v.id;
 			}
 		})
@@ -88,7 +88,7 @@ $(function(){
         var svgWidth = (isMobile)? screenWidth: 1000;
         var svgHeight = 500; 
         var svgId = "PATH"
-        $("#"+svgId).css({"width":svgWidth, "height":svgHeight});
+        $("#"+svgId).css({"width":svgWidth});
         $("#"+svgId).html("");
         var curveWidth = 150; 
         var curveHeight = 50;
@@ -125,6 +125,7 @@ $(function(){
                _path = _path +  " Q 0 "+curveHeight*9+" 150 "+curveHeight*9
                _path = _path +  " L 850 " + curveHeight *9
             }
+			$("#"+svgId).css({"height":(curveHeight*(floorLength+1)*2)+"px"});
         }else{
             console.log("한줄 끝");
         } 
@@ -184,8 +185,9 @@ $(function(){
 		$(".station-group").on("click", function(){
 			console.log( $(this).attr("data-st-code"));
 			var code = $(this).attr("data-st-code");
-			drawCrevassePath(code);
-	
+			drawCrevassePath(code, "up");
+			drawCrevassePath(code, "down");
+			$(".station-info-holder").show();
 		});
 
     }
@@ -214,27 +216,40 @@ $(function(){
 	  
 	  };
 
-	  function drawCrevassePath(stationId){
+	  function drawCrevassePath(stationId, dir){
 		var stationId = stationId || 1;
-        $("#CREVASSE").html("");
+		var svgId;
+		var keyStr; 
+		if( dir=="up"){
+			svgId = "CREVASSE_UP";
+			keyStr = "entrances_up";
+		}else if(dir=="down"){
+			svgId = "CREVASSE_DOWN";
+			keyStr = "entrances_down";
+		}
+
+
+        $("#"+svgId).html("");
         var stationName = $(this).text();
 		var svgWidth = 1000;
-		$("#CREVASSE").css({"width":svgWidth});
+		 $("#"+svgId).css({"width":svgWidth});
+
+
         var defaultLine = "M 0 -1 L "+svgWidth+" -1z";
-        var defaultPathObj = document.getElementById("CREVASSE").appendChild(document.createElementNS("http://www.w3.org/2000/svg", "path"));
+        var defaultPathObj = document.getElementById(svgId).appendChild(document.createElementNS("http://www.w3.org/2000/svg", "path"));
         defaultPathObj.setAttributeNS(null,"d", defaultLine);
         defaultPathObj.setAttributeNS(null,"class", "default-line");
 		
-		var defaultTextObj = document.getElementById("CREVASSE").appendChild(document.createElementNS("http://www.w3.org/2000/svg", "text"));
+		var defaultTextObj = document.getElementById(svgId).appendChild(document.createElementNS("http://www.w3.org/2000/svg", "text"));
 		defaultTextObj.innerHTML = "열차 위치";
 		defaultTextObj.setAttributeNS(null,"transform", "translate(-30,0)");
 		defaultTextObj.setAttributeNS(null, "class", "defalut-text");
 		
-		var descPathObj = document.getElementById("CREVASSE").appendChild(document.createElementNS("http://www.w3.org/2000/svg", "path"));
+		var descPathObj = document.getElementById(svgId).appendChild(document.createElementNS("http://www.w3.org/2000/svg", "path"));
 		descPathObj.setAttributeNS(null,"d", "M 0 100 L 1000 100z");
 		descPathObj.setAttributeNS(null,"class", "desc-path");
 
-		var descTextObj = document.getElementById("CREVASSE").appendChild(document.createElementNS("http://www.w3.org/2000/svg", "text"));
+		var descTextObj = document.getElementById(svgId).appendChild(document.createElementNS("http://www.w3.org/2000/svg", "text"));
 		descTextObj.innerHTML = "100mm";
 		descTextObj.setAttributeNS(null,"transform", "translate(-30,105)");
 		descTextObj.setAttributeNS(null, "class", "desc-text");
@@ -244,54 +259,54 @@ $(function(){
             var tmpPath = "";
 			var sang;
             if(v.id == stationId ) {
-                var count = Object.keys(v["entrances_up"]).length;
-				//console.log(count);
-				sang = svgWidth/(count-1);
-				console.log(sang);
-                var k = 0;
-                for (var key in v["entrances_up"]) { 
-                    // console.log("key : " + key +", value : " + v["entrances_up"][key]);
-                    console.log(v["entrances_up"][key]["distance(mm)"]);
-                    if(k==0){
-                        tmpPath = "M 0 " + v["entrances_up"][key]["distance(mm)"];
-                    } else {
-                        tmpPath += " L " + sang*k + " " + v["entrances_up"][key]["distance(mm)"];
-                    }
-					//if( key.slice(-1) == "1" || key.slice(-1) == "3" ){
-					if( key.slice(-1) == "1"){
-						var tempTextObj = document.getElementById("CREVASSE").appendChild(document.createElementNS("http://www.w3.org/2000/svg", "text"));
-						tempTextObj.innerHTML = key;
-						tempTextObj.setAttributeNS(null,"transform", "translate("+ sang*k+","+(v["entrances_up"][key]["distance(mm)"]+15)+")");
-						tempTextObj.setAttributeNS(null, "class", "platform-number");
+                var count = Object.keys(v[keyStr]).length;
+				if(count == 0 ){
+					console.log("해당 플랫폼 없음")
+				}else {
+					sang = svgWidth/(count-1);
+					console.log(sang);
+					var k = 0;
+					for (var key in v[keyStr]) { 
+						// console.log("key : " + key +", value : " + v[keyStr][key]);
+						console.log(v[keyStr][key]["distance(mm)"]);
+						if(k==0){
+							tmpPath = "M 0 " + v[keyStr][key]["distance(mm)"];
+						} else {
+							tmpPath += " L " + sang*k + " " + v[keyStr][key]["distance(mm)"];
+						}
+						//if( key.slice(-1) == "1" || key.slice(-1) == "3" ){
+						if( key.slice(-1) == "1"){
+							var tempTextObj = document.getElementById(svgId).appendChild(document.createElementNS("http://www.w3.org/2000/svg", "text"));
+							tempTextObj.innerHTML = key;
+							tempTextObj.setAttributeNS(null,"transform", "translate("+ sang*k+","+(v[keyStr][key]["distance(mm)"]+15)+")");
+							tempTextObj.setAttributeNS(null, "class", "platform-number");
+						}
+						
+						if( v[keyStr][key]["wheel_enter"] =="*"){
+							var signLogoObj = document.getElementById(svgId).appendChild(document.createElementNS("http://www.w3.org/2000/svg", "path"));
+							signLogoObj.setAttributeNS(null,"d", signPath);
+							signLogoObj.setAttributeNS(null,"transform", "translate("+ (sang*k-8)+",-37)");
+							signLogoObj.setAttributeNS(null, "class", "sign");
+
+							var signPathObj = document.getElementById(svgId).appendChild(document.createElementNS("http://www.w3.org/2000/svg", "path"));
+							signPathObj.setAttributeNS(null,"d", "M "+sang*k+" 0 L "+sang*k+" "+v[keyStr][key]["distance(mm)"]);
+							signPathObj.setAttributeNS(null, "class", "signPath");
+						}
+						if(v[keyStr][key]["accidents"] >= 1) {
+							var accidentObj = document.getElementById(svgId).appendChild(document.createElementNS("http://www.w3.org/2000/svg", "circle"));
+							accidentObj.setAttributeNS(null,"cx", sang*k);
+							accidentObj.setAttributeNS(null,"cy", v[keyStr][key]["distance(mm)"]);
+							accidentObj.setAttributeNS(null,"r", "20");
+							accidentObj.setAttributeNS(null, "class", "accidentCircle");
+						}
+						k++;
+
 					}
-					
-					if( v["entrances_up"][key]["wheel_enter"] =="*"){
-						var signLogoObj = document.getElementById("CREVASSE").appendChild(document.createElementNS("http://www.w3.org/2000/svg", "path"));
-						signLogoObj.setAttributeNS(null,"d", signPath);
-						signLogoObj.setAttributeNS(null,"transform", "translate("+ (sang*k-8)+",-37)");
-						signLogoObj.setAttributeNS(null, "class", "sign");
-
-						var signPathObj = document.getElementById("CREVASSE").appendChild(document.createElementNS("http://www.w3.org/2000/svg", "path"));
-						signPathObj.setAttributeNS(null,"d", "M "+sang*k+" 0 L "+sang*k+" "+v["entrances_up"][key]["distance(mm)"]);
-						signPathObj.setAttributeNS(null, "class", "signPath");
-					}
-					if(v["entrances_up"][key]["accidents"] >= 1) {
-                        var accidentObj = document.getElementById("CREVASSE").appendChild(document.createElementNS("http://www.w3.org/2000/svg", "circle"));
-                        accidentObj.setAttributeNS(null,"cx", sang*k);
-                        accidentObj.setAttributeNS(null,"cy", v["entrances_up"][key]["distance(mm)"]);
-                        accidentObj.setAttributeNS(null,"r", "20");
-                        accidentObj.setAttributeNS(null, "class", "accidentCircle");
-                    }
-
-
-					k++;
-					
-
-                }
-                var tempPathObj = document.getElementById("CREVASSE").appendChild(document.createElementNS("http://www.w3.org/2000/svg", "path"));
-                tempPathObj.setAttributeNS(null,"d", tmpPath);
-                tempPathObj.setAttributeNS(null,"class", "crevasse crevasse-line0"+keepLine);
-				$(".station-name").html(v.station);
+					var tempPathObj = document.getElementById(svgId).appendChild(document.createElementNS("http://www.w3.org/2000/svg", "path"));
+					tempPathObj.setAttributeNS(null,"d", tmpPath);
+					tempPathObj.setAttributeNS(null,"class", "crevasse crevasse-line0"+keepLine);
+					$(".station-name").html(v.station);				
+				}
 
             } else {
                 tmpPath ="";
