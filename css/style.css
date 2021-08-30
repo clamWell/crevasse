@@ -161,7 +161,7 @@ background:#111; }
 .intro-graphic-holder .subway .subway-door img { display:block; margin: 0 auto; }
 .intro-graphic-holder .gap { width:100%; height: 120px;  background: #e7e8e9; }
 .intro-graphic-holder .platform { width:100%;  position: relative; }
-.intro-graphic-holder .platform .platform-side { width:100%; padding: 10px; box-sizing:border-box;background: #f5f5f5;}
+.intro-graphic-holder .platform .platform-side { width:100%; padding: 10px; box-sizing:border-box;background: #61b759;}
 .intro-graphic-holder .platform .platform-side > img { display:block; margin: 0px auto; }
 .intro-graphic-holder .platform .platform-body { width:100%; position: relative;  border-top: 2px solid #111; }
 .intro-graphic-holder .platform .platform-body .platform-footsign { box-sizing:border-box; padding: 30px; }
@@ -318,6 +318,7 @@ background: linear-gradient(0deg, rgba(255,255,255,0), rgba(255,255,255,1));}
 .crevasse-line07 { stroke:#657536; }
 .crevasse-line08 { stroke:#e9506f; }
 .crevasse-line09 { stroke:#c49b26; }
+
 .accidentCircle {fill: rgb(255, 0, 0)}
 
 

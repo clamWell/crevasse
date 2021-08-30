@@ -60,7 +60,17 @@ $(function(){
     } 
     checkIe();
 
-    
+	function getStationCode(line, station){
+		var code; 
+		station_info.forEach(function(v,i,a){
+			if(line ==v.line &&station== v.station ){
+				console.log(v.id);
+				code = v.id;
+			}
+		})
+		return code; 
+	};
+
     function makePath(line){
         var line = line || 1;
         console.log(line + "호선 그리기")
@@ -159,17 +169,24 @@ $(function(){
         station_holder.setAttributeNS(null,"class", "station-holder");
         station_holder.setAttributeNS(null,"transform", "translate(150, 50)");
         for(d=0;d<st_data.length;d++){
+			 var stationStr= st_data[d];
+			 var code = getStationCode(line, stationStr);
              var tempGroup =  station_holder.appendChild(document.createElementNS("http://www.w3.org/2000/svg", "g"));
              tempGroup.setAttributeNS(null,"class", "station-group st-i-"+d+" st-line-"+line);
              tempGroup.setAttributeNS(null,"transform", "translate("+makeXcor(d)+","+makeYcor(d)+")");
+			 tempGroup.setAttributeNS(null,"data-st-code", code);
              var tempCircle = tempGroup.appendChild(document.createElementNS("http://www.w3.org/2000/svg", "circle"));
              tempCircle.setAttributeNS(null,"class", "station-circle");
              var templabel= tempGroup.appendChild(document.createElementNS("http://www.w3.org/2000/svg", "text"));
-             templabel.innerHTML = st_data[d];
+             templabel.innerHTML = stationStr;
 			 templabel.setAttributeNS(null,"transform", "translate(0, -12)");
         }
-
-     
+		$(".station-group").on("click", function(){
+			console.log( $(this).attr("data-st-code"));
+			var code = $(this).attr("data-st-code");
+			drawCrevassePath(code);
+	
+		});
 
     }
     //makePath();
@@ -191,8 +208,15 @@ $(function(){
 
 	var signPath = "M17.1,16.3c-0.7-1.2-1.4-2.4-2.1-3.6c-0.3-0.5-0.7-0.7-1.3-0.7c-1.7,0-3.4,0-5.2,0c-0.1,0-0.2,0-0.3,0c0-0.6,0-1.1,0-1.7c0.1,0,0.2,0,0.2,0c1.2,0,2.4,0,3.8,0c0.5,0,0.8-0.2,1-0.7c0.2-0.7-0.2-1.4-1-1.4c-1.3,0-2.6,0-3.9,0c-0.1,0-0.2,0-0.2,0C8,7.8,8,7.4,7.9,7C8,6.4,8,5.8,7.7,5.2C7.3,4.8,6.9,4.5,6.5,4.3C6.7,4.2,6.9,4.2,7.1,4C7.8,3.5,8,2.7,7.9,1.9C7.8,1.5,7.6,1.1,7.3,0.7C6.9,0.3,6.5,0.2,6,0C5.8,0,5.6,0,5.4,0C5.1,0.1,5,0.2,4.8,0.2c-0.7,0.3-1.2,1-1.4,1.7c-0.1,0.5,0,1.1,0.3,1.5c0.3,0.5,0.7,0.8,1.2,1C4,4.8,3.6,5.7,3.7,6.7c0,0.6,0.1,1.1,0.1,1.6C3.3,8.6,2.9,8.9,2.6,9.2c0,0,0,0-0.1,0.1c-1.1,1.1-2,2.4-2.3,4c-0.1,0.4-0.2,0.9-0.2,1.4c0,0.5,0,0.9,0,1.3c0.1,0.5,0.2,0.9,0.2,1.4c0.4,1.6,1.2,3,2.4,4.2c0.8,0.7,1.7,1.3,2.8,1.7c0.7,0.2,1.5,0.4,2.3,0.5h0.1c0.4,0,0.9,0,1.3,0c0.2-0.1,0.5-0.1,0.8-0.2c1.1-0.2,2-0.6,2.9-1.1c0.1-0.1,0.2-0.2,0.3-0.2c1.1-0.8,2-1.8,2.7-3c0.2,0.4,0.5,0.8,0.7,1.2c0.3,0.7,1.2,0.8,1.9,0.5c0.3-0.2,0.4-0.5,0.6-0.8c0-0.2,0-0.3,0-0.6c-0.1-0.1-0.1-0.2-0.2-0.2C18.3,18.3,17.7,17.3,17.1,16.3z M14.1,18.8c-0.1,0.2-0.2,0.3-0.3,0.4c-0.6,0.8-1.3,1.5-2.1,2c-0.5,0.3-1.1,0.5-1.7,0.7c-1.2,0.3-2.4,0.2-3.7-0.1c-1.1-0.3-2.1-1-2.9-1.9C2.6,19,2.1,18.1,1.8,17c-0.4-1.6-0.2-3,0.4-4.4c0.3-0.8,0.9-1.5,1.5-2l0,0v0.1c0.1,1,0.1,1.9,0.2,2.9c0,0.4,0.2,0.8,0.5,1.1c0.5,0.6,1.1,0.8,1.9,0.8c2.3,0,4.6,0,6.9,0c0.2,0,0.4,0.1,0.5,0.2c0.3,0.5,0.6,1.1,0.9,1.6c0.1,0.1,0.1,0.2,0.2,0.2C14.6,17.9,14.4,18.4,14.1,18.8z";
 
-    $(".station-name").on("click", function(){
-        $(".crevasse").remove();
+  //  $(".station-name").on("click", function(){
+	  function drawStaionInfo(){
+
+	  
+	  };
+
+	  function drawCrevassePath(stationId){
+		var stationId = stationId || 1;
+        $("#CREVASSE").html("");
         var stationName = $(this).text();
 		var svgWidth = 1000;
 		$("#CREVASSE").css({"width":svgWidth});
@@ -219,7 +243,7 @@ $(function(){
         station_info.forEach(function(v,i,a){
             var tmpPath = "";
 			var sang;
-            if(v.line == keepLine && v.station == stationName) {
+            if(v.id == stationId ) {
                 var count = Object.keys(v["entrances_up"]).length;
 				//console.log(count);
 				sang = svgWidth/(count-1);
@@ -251,34 +275,36 @@ $(function(){
 						signPathObj.setAttributeNS(null,"d", "M "+sang*k+" 0 L "+sang*k+" "+v["entrances_up"][key]["distance(mm)"]);
 						signPathObj.setAttributeNS(null, "class", "signPath");
 					}
-
-                    if(v["entrances_up"][key]["accidents"] >= 1) {
+					if(v["entrances_up"][key]["accidents"] >= 1) {
                         var accidentObj = document.getElementById("CREVASSE").appendChild(document.createElementNS("http://www.w3.org/2000/svg", "circle"));
                         accidentObj.setAttributeNS(null,"cx", sang*k);
                         accidentObj.setAttributeNS(null,"cy", v["entrances_up"][key]["distance(mm)"]);
                         accidentObj.setAttributeNS(null,"r", "20");
                         accidentObj.setAttributeNS(null, "class", "accidentCircle");
                     }
+
+
 					k++;
 					
-			
+
                 }
                 var tempPathObj = document.getElementById("CREVASSE").appendChild(document.createElementNS("http://www.w3.org/2000/svg", "path"));
                 tempPathObj.setAttributeNS(null,"d", tmpPath);
                 tempPathObj.setAttributeNS(null,"class", "crevasse crevasse-line0"+keepLine);
+				$(".station-name").html(v.station);
 
             } else {
                 tmpPath ="";
             }
             
         });
+
+
         
-    });
-	$(".station-group").on("click", function(){
+    };
 	
-	
-	});
     
+//	$(".station-group")[0].addEventListener("click", function(){ console.log("test")});
 });
 
 function sendSns(s) {
