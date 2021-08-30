@@ -152,6 +152,43 @@ background:#111; }
 .container {  width:100%; position: relative; overflow: hidden;}
 .each-sec { padding-bottom: 50px; box-sizing:border-box; position: relative; }
 .sec-into {}
+
+.story-title {width:100%;margin-bottom: 100px; }
+.story-title .title-background {width:100%; min-height: 500px;   margin-bottom: 50px;}
+.intro-graphic-holder { width:100%; position: relative; }
+.intro-graphic-holder .subway { width:100%;  border-bottom: 2px solid #111; }
+.intro-graphic-holder .subway .subway-door { box-sizing:border-box; padding: 30px 0; }
+.intro-graphic-holder .subway .subway-door img { display:block; margin: 0 auto; }
+.intro-graphic-holder .gap { width:100%; height: 120px;  background: #e7e8e9; }
+.intro-graphic-holder .platform { width:100%;  position: relative; }
+.intro-graphic-holder .platform .platform-side { width:100%; padding: 10px; box-sizing:border-box;background: #f5f5f5;}
+.intro-graphic-holder .platform .platform-side > img { display:block; margin: 0px auto; }
+.intro-graphic-holder .platform .platform-body { width:100%; position: relative;  border-top: 2px solid #111; }
+.intro-graphic-holder .platform .platform-body .platform-footsign { box-sizing:border-box; padding: 30px; }
+.intro-graphic-holder .platform .platform-body .platform-footsign > img { display:block; margin: 0px auto;  }
+.intro-graphic-holder .platform .platform-body .human-foot { position: absolute; width:200px; bottom:0px; left:50%; margin-left:-100px;   }
+.intro-graphic-holder .platform .platform-body .human-foot .foot-left { position: relative; display:inline-block; }
+.intro-graphic-holder .platform .platform-body .human-foot .foot-right {position: relative; display:inline-block; margin-left: 30px;}
+.intro-graphic-holder .platform .platform-body .human-foot > div > img { position: relative; top: 0; }
+.intro-graphic-holder .platform .platform-body .human-foot .foot-left img {animation:footGoAhead 4s infinite cubic-bezier(0.37,0.01,0.55,0.99) both; animation-delay: 0.5s; }
+.intro-graphic-holder .platform .platform-body .human-foot .foot-right img {animation: footGoAhead 4s infinite cubic-bezier(0.37,0.01,0.55,0.99) both; }
+@keyframes footGoAhead {
+	0% {top: 0px;}
+	40% { top: 0px; }
+	50% { top: -10px; }
+	55% { top: -10px; }
+	70% { top: 0px; }
+	100% { top: 0px;}
+}
+
+
+.title-text {text-align: center; }
+.title-text .page-main-title {position: relative; width: 840px; margin: 0 auto;  }
+.title-text .page-main-title>  img { display: block; margin: 0 auto; }
+.title-text .page-main-title .title-falling { position: absolute;  bottom: 0; right: 180px; }
+.title-text .page-main-title .title-falling img { position: relative; bottom: 0; left:0; bottom: 200px; opacity:0;  }
+.title-text .page-sub-title {   margin-top: 20px; color: #2e2e2e;  text-align: center; font-size: 22px; font-family: 'Noto Serif KR', 'notokr-regular';}
+
 .para-holder { margin: 70px auto; font-family: 'Noto Serif KR',  'notokr-regular'; }
 .para-holder p {font-size: 20px;  max-width: 550px; text-align: left; color: #222; margin: 20px auto; line-height: 1.7; letter-spacing: -0.3px;word-break: keep-all; }
 .sec--00 .para-holder p { color:#fff; opacity:0.85; }
@@ -161,7 +198,8 @@ background:#111; }
 .para-holder p.center { text-align: center; }
 .para-holder p.docu {box-sizing: border-box; padding-left: 40px; border-left: 3px solid #fff; font-size: 18px; }
 .para-holder p.ment {  font-weight: 500;font-family: 'Noto Sans KR', 'notokr-regular';  font-size: 18px; }
-.para-docu p { font-weight: lighter; font-family: 'Noto Serif KR',  'notokr-regular'; }
+.para-docu img {display: block; margin: 0 auto; width: 650px; }
+.para-docu p { font-weight: 500;box-sizing: border-box;  padding: 25px; border:2px solid #111; color: #3a4a59; font-size: 20px; font-family: 'Noto Sans KR', 'notokr-regular'; word-break: keep-all; max-width: 650px; }
 .sec-title .numb { font-family: 'Noto Serif KR', 'notokr-regular', serif;  width: 100%;text-align: center;
 font-size: 80px;line-height: 120px;color: #222; font-weight: 600; font-weight: 600;}
 .sec-title .title {  width: 100%; font-size: 22px; line-height: 1.5; color:  #282828; text-align: center;font-family: 'Noto Serif KR', 'notokr-regular';font-weight: bold;}

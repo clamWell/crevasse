@@ -185,7 +185,7 @@ $(function(){
     
     init();
 	$(".loading-page").fadeOut(200, function(){
-	
+		$(".title-falling img").animate({"bottom":"0", "opacity":"1"}, 800, "easeOutBounce");
 	});
 
     $(".station-name").on("click", function(){

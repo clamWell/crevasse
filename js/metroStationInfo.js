@@ -145,6 +145,7 @@ var station_info = [
 	},
 	{
 		"line": 4,
+		"id": 1,
 		"station": "서울역",
 		"category": "본선",
 		"up_down": "상선",
