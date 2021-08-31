@@ -185,8 +185,10 @@ $(function(){
 		$(".station-group").on("click", function(){
 			console.log( $(this).attr("data-st-code"));
 			var code = $(this).attr("data-st-code");
-			drawCrevassePath(code, "up");
-			drawCrevassePath(code, "down");
+            var count_accident = 0;
+			count_accident = drawCrevassePath(code, "up", count_accident);
+			count_accident = drawCrevassePath(code, "down", count_accident);
+            $(".detail-accidents").html("총 "+ count_accident +"번");
 			$(".station-info-holder").show();
 		});
 
@@ -216,7 +218,7 @@ $(function(){
 	  
 	  };
 
-	  function drawCrevassePath(stationId, dir){
+	  function drawCrevassePath(stationId, dir, count_accident){       
 		var stationId = stationId || 1;
 		var svgId;
 		var keyStr; 
@@ -255,10 +257,12 @@ $(function(){
 		descTextObj.setAttributeNS(null, "class", "desc-text");
 
         var st_info = new Array; 
+        var max_dist = 0;
         station_info.forEach(function(v,i,a){
             var tmpPath = "";
 			var sang;
             if(v.id == stationId ) {
+                
                 var count = Object.keys(v[keyStr]).length;
 				if(count == 0 ){
 					console.log("해당 플랫폼 없음")
@@ -268,12 +272,15 @@ $(function(){
 					var k = 0;
 					for (var key in v[keyStr]) { 
 						// console.log("key : " + key +", value : " + v[keyStr][key]);
-						console.log(v[keyStr][key]["distance(mm)"]);
+						// console.log(v[keyStr][key]["distance(mm)"]);
 						if(k==0){
 							tmpPath = "M 0 " + v[keyStr][key]["distance(mm)"];
 						} else {
 							tmpPath += " L " + sang*k + " " + v[keyStr][key]["distance(mm)"];
 						}
+                        if (v[keyStr][key]["distance(mm)"] > max_dist) {
+                            max_dist = v[keyStr][key]["distance(mm)"];
+                        }
 						//if( key.slice(-1) == "1" || key.slice(-1) == "3" ){
 						if( key.slice(-1) == "1"){
 							var tempTextObj = document.getElementById(svgId).appendChild(document.createElementNS("http://www.w3.org/2000/svg", "text"));
@@ -300,12 +307,44 @@ $(function(){
 							accidentObj.setAttributeNS(null, "class", "accidentCircle");
 						}
 						k++;
-
+                        count_accident += v[keyStr][key]["accidents"];
 					}
+
+                    if (max_dist > 150) {
+                        $("#"+svgId).css('height', max_dist +'px');
+                    }
+                    if (max_dist > 200) {
+                        var descPathObj_2 = document.getElementById(svgId).appendChild(document.createElementNS("http://www.w3.org/2000/svg", "path"));
+		                descPathObj_2.setAttributeNS(null,"d", "M 0 200 L 1000 200z");
+		                descPathObj_2.setAttributeNS(null,"class", "desc-path");
+
+                        var descTextObj_2 = document.getElementById(svgId).appendChild(document.createElementNS("http://www.w3.org/2000/svg", "text"));
+		                descTextObj_2.innerHTML = "200mm";
+		                descTextObj_2.setAttributeNS(null,"transform", "translate(-30,205)");
+		                descTextObj_2.setAttributeNS(null, "class", "desc-text");
+                    }
+
 					var tempPathObj = document.getElementById(svgId).appendChild(document.createElementNS("http://www.w3.org/2000/svg", "path"));
 					tempPathObj.setAttributeNS(null,"d", tmpPath);
 					tempPathObj.setAttributeNS(null,"class", "crevasse crevasse-line0"+keepLine);
-					$(".station-name").html(v.station);				
+					$(".station-name").html(v.station);
+                    var onlyyear = String(v.year).slice(0,4);
+                    $(".detail-year").html(onlyyear + "년");
+                    if (Number(onlyyear) >= 2005) {
+                        $(".detail-court").html("소송 가능");
+                    } else {
+                        $(".detail-court").html("소송 패소");
+                    }
+                    if (v.moved_board == "O"){
+                        $(".detail-board").html("있음");
+                    } else {
+                        $(".detail-board").html("없음");
+                    }
+                    if (v.one_stop == "O") {
+                        $(".detail-service").html("운행 중");
+                    } else {
+                        $(".detail-service").html("미운행");
+                    }
 				}
 
             } else {
@@ -314,7 +353,7 @@ $(function(){
             
         });
 
-
+        return count_accident;
         
     };
 	
