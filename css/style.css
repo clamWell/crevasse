@@ -227,19 +227,23 @@ font-size: 80px;line-height: 120px;color: #222; font-weight: 600; font-weight: 6
 .top-byline .top-border p a { color:#222; }
 .top-byline .top-border p a:hover {text-decoration: underline;}
 
+.metro-select-area { position: relative; }
+.metro-select-area .desc { text-align: center; font-size: 14px;  opacity: 0.8; color: #555459;}
+.metro-select-area .desc b { text-decoration: underline;}
+.metro-select-holder {position: relative; box-sizing:border-box; padding: 30px 0;}
 .graph-holder {  position: relative; }
-.metro-btn { max-width: 850px; position: absolute; top:0;left:50%; margin-left:-300px;z-index:2; }
+.metro-btn { max-width: 850px; position: absolute; top:50px;left:50%; margin-left:-300px;z-index:2; }
 .metro-btn ul  { position: relative; text-align: center;}
-.metro-btn ul li  { display: inline-block; box-sizing:border-box; padding: 4px 10px; background: #2d2b3b;color: #ddd; font-family: 'Noto Sans KR'; font-size: 16px; cursor: pointer;
-border-radius: 4px;margin: 0px 2px;border: 1px solid #111;opacity: 0.7;}
+.metro-btn ul li  { display: inline-block; box-sizing:border-box; padding: 5px 10px; font-family: 'Noto Sans KR'; font-size: 16px; cursor: pointer;
+border-radius: 4px;margin: 0px 2px; opacity: 0.7; background: #fff; color: #111;border: 2px solid #111;font-weight: bold;}
 .metro-btn ul li:hover { opacity: 1; box-shadow: 2px 2px 7px rgba(0,0,0,0.3);}
 .metro-btn ul li.on { background:#111; opacity:1; color:#fff; }
-.path-draw-canvas{max-width: 1000px; margin: 0px auto;  margin-bottom: 100px; }
+.path-draw-canvas{position: relative;  max-width: 1000px; margin: 0px auto;  margin-bottom: 100px; }
 .path-draw-canvas > div {position: relative;left: -7px;}
 .path-draw-canvas > div > .pillow { width: 15px; height:150px; background:#111; }
 .path-draw-canvas > div > .number-box {position: absolute; 
-bottom: 0px; left: -24px;width: 60px;height: 60px;background: #fff; border: 5px solid #111; box-sizing: border-box; line-height: 50px; border-radius: 10px;}
-.path-draw-canvas > div > .number-box p {text-align:center; font-weight: bold; font-size: 20px; }
+bottom: 0px; left: -24px;width: 100px;height: 60px;background: #fff; border: 5px solid #111; box-sizing: border-box; line-height: 50px; border-radius: 10px;}
+.path-draw-canvas > div > .number-box p {text-align:center; font-size: 18px;font-weight: 500; color: #494b51;}
 .path-draw-canvas > div > .pillow-shadow {width: 50px; height: 100px; position:absolute;top:0;left:0;
 background: linear-gradient(0deg, rgba(255,255,255,0), rgba(255,255,255,1));}
 .path-draw-canvas .deco01 .number-box  {border: 5px solid #0a3190; }
@@ -294,24 +298,26 @@ background: linear-gradient(0deg, rgba(255,255,255,0), rgba(255,255,255,1));}
 .st-line-8 .station-circle { stroke: #e9506f; }
 .st-line-9 .station-circle { stroke: #c49b26;}
 
-.station-info-holder { width: 100%;  box-sizing: border-box;  padding-top:0; border-top: 3px solid #111;  border-bottom: 3px solid #111; padding-bottom: 50px; display:none;}
-.station-info {margin: 0 auto; width: 400px; position: relative; top: -30px;}
-.name-holder {padding: 10px; border-radius: 15px; border: #111 solid 3px; text-align: center; background-color: white;}
+.station-info-holder { width: 100%;  box-sizing: border-box;  padding-top:0; padding-bottom: 50px; display:none;max-width: 1300px;margin: 0 auto; background: #f4f4f4;}
+.station-info {margin: 0 auto; position: relative;}
+.name-holder {padding: 30px;text-align: center;}
+.name-holder  h2.station-name {  font-size: 50px; line-height: 1; font-weight: 800; color: #303037; }
+
 
 .station-para {padding: 20px; background-color: white;}
 .station-distance {text-align: center; }
 .station-distance h3 {font-size: 20px;font-weight: 500; color: #262629; margin-bottom: 10px;}
-.crevasse-svg-holder { padding: 20px 0px;  width: 1100px; box-sizing: border-box; margin: 0 auto;    background: #f4f4f4; margin-bottom: 20px; border-radius: 10px;}
-.crevasse-svg {width: 1000px; min-height: 150px; height: 150px; overflow: visible; display:block; margin: 50px auto; position: relative; left: 20px;}
+.crevasse-svg-holder { padding: 20px 0px;  width: 1150px; box-sizing: border-box; margin: 0 auto;  position: relative;background: rgba(255,255,255,0.5); margin-bottom: 20px; border-radius: 10px;}
+.crevasse-svg {width: 1000px; height: 150px; min-height:150px; overflow: visible; display:block; margin: 50px auto; position: relative; left: 20px;}
 .crevasse-svg h4 { text-align:center; font-size: 15px; }
-.crevasse { stroke-width:2.5;  stroke: #272727; fill: none;}
+.crevasse { stroke-width:3;  stroke: #272727; fill: none;}
 .default-line { stroke-width:1;  stroke: #111; fill: none; shape-rendering: crispEdges;}
 .platform-number { font-size: 11px;font-weight: bold; color:#111;  stroke: white; stroke-width: 1.5px; paint-order: stroke fill;  text-anchor: middle; }
 .desc-path {stroke: #111;stroke-width: 2; stroke-dasharray: 6; fill: none;stroke-opacity: 0.2;shape-rendering: crispEdges;}
 .defalut-text { font-size: 12px;font-weight: bold; color:#111;  text-anchor: middle;}
 .desc-text { font-size: 12px;font-weight: bold; color:#333;opacity:0.3; text-anchor: middle;}
 .crevasse-svg .sign { fill: #9ba1b8; }
-.crevasse-svg .signPath { stroke: #4163ff;stroke-dasharray: 3; fill: none; stroke-opacity: 0.5; shape-rendering: crispEdges;}
+.crevasse-svg .signPath { stroke: #434655; stroke-dasharray: 3; fill: none; stroke-opacity: 0.5; shape-rendering: crispEdges;}
 .crevasse-line01 { stroke:#0a3190; }
 .crevasse-line02 { stroke:#00a547; }
 .crevasse-line03 { stroke:#f08300; }
@@ -322,11 +328,40 @@ background: linear-gradient(0deg, rgba(255,255,255,0), rgba(255,255,255,1));}
 .crevasse-line08 { stroke:#e9506f; }
 .crevasse-line09 { stroke:#c49b26; }
 
-.accidentCircle {fill: rgb(255, 0, 0)}
+.platformCircle { fill: rgba(255,255,255,0.2); cursor: pointer;  }
+.platformCircle:hover {  fill: rgba(255,255,255,0.3);stroke: rgba(0,0,0,0.5); stroke-width:2;}
+.accidentCircle { fill: #ff2100;fill-opacity: 0.75; }
 
-.station-detail {width: 250px; margin: 20px auto;}
-.detail-words {font-size: 20px;}
+.crevasse-svg-holder .tooltip { display:none; position: absolute;width: auto; bottom: -50px; z-index: 2;  border-radius: 5px;  box-sizing: border-box; padding: 15px;background: rgba(255,255,255,0.98);}
+.crevasse-svg-holder .tooltip-wrap { text-align: right;font-size: 13px;}
+.crevasse-svg-holder .tooltip .each-platform-dis {}
+.crevasse-svg-holder .tooltip .each-platform-dis .distance {font-weight: bold;}
+.crevasse-svg-holder .tooltip .board-info-01 {}
+.crevasse-svg-holder .tooltip .board-info-01 .value  { font-weight: bold;}
+.crevasse-svg-holder .tooltip .board-info-02 {}
+.crevasse-svg-holder .tooltip .board-info-02 .value { font-weight: bold;} 
+
+.station-detail { margin: 20px auto;max-width: 800px; margin-bottom: 50px; background: #fff; box-sizing: border-box; padding: 30px; 
+border-top: 4px double #111;border-bottom: 4px double #111;  border-top: 3px solid #404359; border-bottom: 3px solid #404359;}
+.detail-words {font-size: 17px;  line-height: 1.65; display: inline-block; width: 49%;  box-sizing: border-box; color: #3c3e40;}
+.detail-words b { min-width: 250px;}
 .detail-answer {margin-left: 20px;}
+
+.legend { margin: 30px auto; max-width: 500px; text-align: center; vertical-align: middle; }
+.legend ul { }
+.legend ul li { display: inline-block; margin: 0px 5px; font-size: 14px; color: #424242; font-weight: bold;vertical-align: middle;}
+.legend ul li span.circle {display: inline-block;margin-right: 5px;  width: 16px; height:16px; border-radius: 50%; background: #ff2100; opacity: 0.75;    vertical-align: middle; }
+.legend ul li span.circle-01 {}
+.legend ul li span.circle-02 { width: 22.62px; height:22.62px;  } 
+.legend ul li span.circle-03 { width: 27.7px; height:27.7px; }
+.legend ul li span.circle-04 { width: 32px; height:32px; }
+
+.re-btn-holder { margin: 0 auto; margin-top: 57px; }
+.re-btn-holder .re-button {   transition: all 0.2s ease 0s;width: 400px; box-sizing: border-box;padding: 25px;text-align: center; margin: 0 auto;border-radius: 4px;background: #4c4d55;cursor: pointer;}
+.re-btn-holder .re-button p {color: #fff;font-size: 18px; font-weight: 400; opacity: 0.8;}
+.re-btn-holder .re-button:hover { box-shadow: 10px 10px 15px rgb(61 61 70 / 25%); transform: translate(5px, 0px);}
+.re-btn-holder .re-button:hover p {  opacity: 1;}
+
 
 /** fixed Navi **/
 .fixed-navi {position: fixed; right: 10px;top: 50%;margin-top: -250px; right: -200px;

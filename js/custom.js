@@ -82,7 +82,7 @@ $(function(){
             }
         });
         console.log(st_data);
-        $(".path-draw-canvas .number-box p").html(line);
+        $(".path-draw-canvas .number-box p").html(line+"호선");
         $(".path-draw-canvas #path-start-deco").removeClass();
         $(".path-draw-canvas #path-start-deco").addClass("deco0"+line)
         var svgWidth = (isMobile)? screenWidth: 1000;
@@ -94,7 +94,8 @@ $(function(){
         var curveHeight = 50;
         var stationMargin = 100;
         var horizonWidth = svgWidth - (curveWidth*2);
-        var stationMaxCount = horizonWidth / stationMargin;
+        var stationMaxCount = (horizonWidth / stationMargin)+1;
+		console.log(stationMaxCount);
 
         var _path = new String;
         var pathStart= "M 0 0 Q 0 "+curveHeight+" 150 "+curveHeight
@@ -102,30 +103,30 @@ $(function(){
         _path = _path + " Q 1000 "+curveHeight+" 1000 "+ curveHeight*2; //첫번째줄 커브 
         //M 0 0 Q 0 100 150 100 L 700 100 Q 800 100 800 200 
 
-        var floorLength = parseInt(st_data.length / stationMaxCount);        
+        var floorLength = Math.ceil(st_data.length / stationMaxCount);        
         console.log(st_data.length, floorLength);
         if( floorLength > 0 ){
             console.log(floorLength+"개의 라인 그려야함");
-            if( floorLength >= 1 ){
+            if( floorLength > 1 ){
                 _path = _path +  " Q 1000 "+curveHeight*3+" 850 "+ curveHeight*3
                 _path = _path +  " L 150 "+curveHeight*3
             }
-            if( floorLength >= 2){
+            if( floorLength > 2){
                 _path = _path +  " Q 0 "+curveHeight*3+" 0 "+ curveHeight*4
                 _path = _path +  " Q 0 "+curveHeight*5+" 150 "+curveHeight*5
                 _path = _path +  " L 850 " + curveHeight *5
             }
-            if( floorLength >= 3){
+            if( floorLength > 3){
                _path = _path +  " Q 1000 "+curveHeight*5+" 1000 "+ curveHeight*6
                _path = _path +  " Q 1000 "+curveHeight*7+" 850 "+curveHeight*7
                _path = _path +  " L 150 " + curveHeight *7
             } 
-            if( floorLength >= 4){
+            if( floorLength > 4){
                _path = _path +  " Q 0 "+curveHeight*7+" 0 "+ curveHeight*8
                _path = _path +  " Q 0 "+curveHeight*9+" 150 "+curveHeight*9
                _path = _path +  " L 850 " + curveHeight *9
             }
-			$("#"+svgId).css({"height":(curveHeight*(floorLength+1)*2)+"px"});
+			$("#"+svgId).css({"height":(curveHeight*(floorLength)*2)+"px"});
         }else{
             console.log("한줄 끝");
         } 
@@ -160,7 +161,11 @@ $(function(){
         }
         
         var makeXcor = function(i) {
-            return (i % stationMaxCount) * 100;
+			if ( (parseInt(i / stationMaxCount)%2) == 1){
+				return  700-((i % stationMaxCount) * 100);
+			}else{
+				return (i % stationMaxCount) * 100;
+			}
         };
         var makeYcor = function(i) {
             return parseInt(i / stationMaxCount) *curveHeight*2
@@ -185,19 +190,30 @@ $(function(){
 		$(".station-group").on("click", function(){
 			console.log( $(this).attr("data-st-code"));
 			var code = $(this).attr("data-st-code");
-            var count_accident = 0;
+			var count_accident = 0;
+			nowStation = code;
 			count_accident = drawCrevassePath(code, "up", count_accident);
 			count_accident = drawCrevassePath(code, "down", count_accident);
             $(".detail-accidents").html("총 "+ count_accident +"번");
 			$(".station-info-holder").show();
+			var movePos = $(".station-info-holder").offset().top;
+			$("html, body").animate({scrollTop: movePos-70},1200, "easeOutCubic");
 		});
 
+
+
     }
-    //makePath();
+
     
+	var nowMetroLIne;
+	var nowStationCode;
+	var nowStationData;
+
     $("#METRO_BTN ul li").on("click", function(){
-        var userC_line = $(this).attr("data-id");     
+		resetStationInfo();
+        var userC_line = $(this).attr("data-id");    
         userC_line = userC_line.replace("s_", ""); 
+		nowMetroLIne = userC_line;
         makePath(userC_line);
     });
 
@@ -218,7 +234,7 @@ $(function(){
 	  
 	  };
 
-	  function drawCrevassePath(stationId, dir, count_accident){       
+	  function drawCrevassePath(stationId, dir, count_accident){
 		var stationId = stationId || 1;
 		var svgId;
 		var keyStr; 
@@ -256,13 +272,25 @@ $(function(){
 		descTextObj.setAttributeNS(null,"transform", "translate(-30,105)");
 		descTextObj.setAttributeNS(null, "class", "desc-text");
 
+		var accCircleObj = document.getElementById(svgId).appendChild(document.createElementNS("http://www.w3.org/2000/svg", "g"));
+		accCircleObj.setAttributeNS(null,"class", "acc-circle-holder");
+
+		var mainPathHolderObj = document.getElementById(svgId).appendChild(document.createElementNS("http://www.w3.org/2000/svg", "g"));
+		mainPathHolderObj.setAttributeNS(null,"class", "main-path-holder");
+
+		var platformHolderObj = document.getElementById(svgId).appendChild(document.createElementNS("http://www.w3.org/2000/svg", "g"));
+		platformHolderObj.setAttributeNS(null,"class", "platform-holder");
+
+		var labelHolderObj = document.getElementById(svgId).appendChild(document.createElementNS("http://www.w3.org/2000/svg", "g"));
+		labelHolderObj.setAttributeNS(null,"class", "label-holder");
+
         var st_info = new Array; 
-        var max_dist = 0;
+		var max_dist = 0;
         station_info.forEach(function(v,i,a){
             var tmpPath = "";
 			var sang;
             if(v.id == stationId ) {
-                
+				nowStationData = v;
                 var count = Object.keys(v[keyStr]).length;
 				if(count == 0 ){
 					console.log("해당 플랫폼 없음")
@@ -271,23 +299,31 @@ $(function(){
 					console.log(sang);
 					var k = 0;
 					for (var key in v[keyStr]) { 
-						// console.log("key : " + key +", value : " + v[keyStr][key]);
-						// console.log(v[keyStr][key]["distance(mm)"]);
 						if(k==0){
 							tmpPath = "M 0 " + v[keyStr][key]["distance(mm)"];
 						} else {
 							tmpPath += " L " + sang*k + " " + v[keyStr][key]["distance(mm)"];
 						}
-                        if (v[keyStr][key]["distance(mm)"] > max_dist) {
+						if (v[keyStr][key]["distance(mm)"] > max_dist) {
                             max_dist = v[keyStr][key]["distance(mm)"];
                         }
+
 						//if( key.slice(-1) == "1" || key.slice(-1) == "3" ){
+						
 						if( key.slice(-1) == "1"){
-							var tempTextObj = document.getElementById(svgId).appendChild(document.createElementNS("http://www.w3.org/2000/svg", "text"));
+							var tempTextObj = labelHolderObj.appendChild(document.createElementNS("http://www.w3.org/2000/svg", "text"));
 							tempTextObj.innerHTML = key;
 							tempTextObj.setAttributeNS(null,"transform", "translate("+ sang*k+","+(v[keyStr][key]["distance(mm)"]+15)+")");
 							tempTextObj.setAttributeNS(null, "class", "platform-number");
 						}
+
+						
+						var tempPlatformObj = platformHolderObj.appendChild(document.createElementNS("http://www.w3.org/2000/svg", "circle"));
+						tempPlatformObj.setAttributeNS(null,"cx", sang*k);
+						tempPlatformObj.setAttributeNS(null,"cy", v[keyStr][key]["distance(mm)"]);
+						tempPlatformObj.setAttributeNS(null,"r", "5");
+						tempPlatformObj.setAttributeNS(null, "class", "platformCircle");
+						tempPlatformObj.setAttributeNS(null, "data-platform", key);
 						
 						if( v[keyStr][key]["wheel_enter"] =="*"){
 							var signLogoObj = document.getElementById(svgId).appendChild(document.createElementNS("http://www.w3.org/2000/svg", "path"));
@@ -300,17 +336,29 @@ $(function(){
 							signPathObj.setAttributeNS(null, "class", "signPath");
 						}
 						if(v[keyStr][key]["accidents"] >= 1) {
-							var accidentObj = document.getElementById(svgId).appendChild(document.createElementNS("http://www.w3.org/2000/svg", "circle"));
+							var accidentObj = accCircleObj.appendChild(document.createElementNS("http://www.w3.org/2000/svg", "circle"));
+							if(v[keyStr][key]["accidents"] == 1) {
+								radius = 8;
+							}else if( v[keyStr][key]["accidents"] == 2){
+								//radius = 12;
+								radius = Math.sqrt(128);
+							}else if( v[keyStr][key]["accidents"] == 3){
+								//radius = 16;
+								radius = Math.sqrt(192);
+							}else if( v[keyStr][key]["accidents"] >= 4){
+								//radius = 20;
+								radius = Math.sqrt(256);
+							}
 							accidentObj.setAttributeNS(null,"cx", sang*k);
 							accidentObj.setAttributeNS(null,"cy", v[keyStr][key]["distance(mm)"]);
-							accidentObj.setAttributeNS(null,"r", "20");
+							accidentObj.setAttributeNS(null,"r", radius);
 							accidentObj.setAttributeNS(null, "class", "accidentCircle");
 						}
 						k++;
-                        count_accident += v[keyStr][key]["accidents"];
-					}
+						count_accident += v[keyStr][key]["accidents"];
 
-                    if (max_dist > 150) {
+					}
+					if (max_dist > 150) {
                         $("#"+svgId).css('height', max_dist +'px');
                     }
                     if (max_dist > 200) {
@@ -324,41 +372,83 @@ $(function(){
 		                descTextObj_2.setAttributeNS(null, "class", "desc-text");
                     }
 
-					var tempPathObj = document.getElementById(svgId).appendChild(document.createElementNS("http://www.w3.org/2000/svg", "path"));
+
+					var tempPathObj = mainPathHolderObj.appendChild(document.createElementNS("http://www.w3.org/2000/svg", "path"));
 					tempPathObj.setAttributeNS(null,"d", tmpPath);
 					tempPathObj.setAttributeNS(null,"class", "crevasse crevasse-line0"+keepLine);
+					
+					// 개별 역 정보 입력
 					$(".station-name").html(v.station);
                     var onlyyear = String(v.year).slice(0,4);
                     $(".detail-year").html(onlyyear + "년");
                     if (Number(onlyyear) >= 2005) {
-                        $(".detail-court").html("소송 가능");
+                        $(".detail-court").html("서울교통공사 책임 있음");
                     } else {
-                        $(".detail-court").html("소송 패소");
+                        $(".detail-court").html("서울교통공사 책임 없음");
                     }
                     if (v.moved_board == "O"){
-                        $(".detail-board").html("있음");
+                        $(".detail-board").html("설치되어 있음");
                     } else {
-                        $(".detail-board").html("없음");
+                        $(".detail-board").html("설치되어있지 않음");
                     }
                     if (v.one_stop == "O") {
-                        $(".detail-service").html("운행 중");
+                        $(".detail-service").html("운영 중");
                     } else {
-                        $(".detail-service").html("미운행");
+                        $(".detail-service").html("미운영");
                     }
-				}
 
+				}
             } else {
                 tmpPath ="";
             }
-            
-        });
+			var isCircleOn = false; 
+			$(".platformCircle").on("mouseenter", function(){
+				//console.log( $(this).attr("cx"));
+				var number = $(this).attr("data-platform");
+				var dir = $(this).parent("g").parent("svg").attr("id").replace("CREVASSE_",""); 
 
-        return count_accident;
-        
+				if(dir =="UP"){
+					$(".crevasse-svg-holder-up .tooltip").show();
+					$(".crevasse-svg-holder-up .tooltip").css({"left": ($(this).attr("cx")+150)+"px"});
+					$(".each-platform-dis .number").html(number);
+					$(".each-platform-dis .distance").html(nowStationData["entrances_up"][number]["distance(mm)"]+"mm");
+					$(".board-info-01 .value").html(nowStationData["entrances_up"][number]["auto_board"]);
+					$(".board-info-02 .value").html(nowStationData["entrances_up"][number]["rubber_board"]);
+
+				}else{
+					$(".crevasse-svg-holder-down .tooltip").show();
+					$(".crevasse-svg-holder-down .tooltip").css({"left": ($(this).attr("cx")+150)+"px"});
+					$(".each-platform-dis .number").html(number);
+					$(".each-platform-dis .distance").html(nowStationData["entrances_down"][number]["distance(mm)"]+"mm");
+					$(".board-info-01 .value").html(nowStationData["entrances_down"][number]["auto_board"]);
+					$(".board-info-02 .value").html(nowStationData["entrances_down"][number]["rubber_board"]);
+				
+				}
+
+			});
+			$(".platformCircle").on("mouseleave", function(){
+				//console.log("나감");
+				$(".crevasse-svg-holder .tooltip").hide();
+			});
+
+        });
+		return count_accident;
     };
+
+	$(".re-button").on("click", function(){
+		resetStationInfo();
+		var movePos = $(".metro-select-area").offset().top; 
+		$("html, body").animate({scrollTop: movePos-100},800, "easeOutCubic");
+	});
 	
-    
-//	$(".station-group")[0].addEventListener("click", function(){ console.log("test")});
+	function resetStationInfo(){
+		$(".station-info-holder").hide();
+		nowStationCode=null;
+		nowStationDat=null;
+		$(".crevasse-svg").css({"height":"150px"});
+	}
+	
+
 });
 
 function sendSns(s) {

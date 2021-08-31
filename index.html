@@ -226,36 +226,38 @@
 
 
 
-
-
-						<div class="graph-holder">
-							<div class="btn-holder metro-btn" id="METRO_BTN">
-								<ul>
-									<li class="btn_line_1" data-id="s_1">1호선</li>
-									<li class="btn_line_2" data-id="s_2">2호선</li>
-									<li class="btn_line_3" data-id="s_3">3호선</li>
-									<li class="btn_line_4" data-id="s_4">4호선</li>
-									<li class="btn_line_5" data-id="s_5">5호선</li>
-									<li class="btn_line_6" data-id="s_6">6호선</li>
-									<li class="btn_line_7" data-id="s_7">7호선</li>
-									<li class="btn_line_8" data-id="s_8">8호선</li>
-									<li class="btn_line_9" data-id="s_9">9호선</li>
-		
-								</ul>
-							</div>
-							<div class="path-draw-canvas">
-								<div class="" id="path-start-deco">
-									<div class="pillow"></div>
-									<div class="number-box">
-										<p>?</p>
-									</div>
-									<div class="pillow-shadow"></div>
+						<div class="metro-select-area">
+							<div class="desc">*해당 노선 지하철 역 중 <b>열차와의 간격이 100mm이상인</b> 승강장이 하나라도 있는 역만 정렬했습니다</div>
+							<div class="metro-select-holder">
+								<div class="btn-holder metro-btn" id="METRO_BTN">
+									<ul>
+										<li class="btn_line_1" data-id="s_1">1호선</li>
+										<li class="btn_line_2" data-id="s_2">2호선</li>
+										<li class="btn_line_3" data-id="s_3">3호선</li>
+										<li class="btn_line_4" data-id="s_4">4호선</li>
+										<li class="btn_line_5" data-id="s_5">5호선</li>
+										<li class="btn_line_6" data-id="s_6">6호선</li>
+										<li class="btn_line_7" data-id="s_7">7호선</li>
+										<li class="btn_line_8" data-id="s_8">8호선</li>
+										<li class="btn_line_9" data-id="s_9">9호선</li>
+			
+									</ul>
 								</div>
-								<svg id="PATH">
-								
-								</svg>	
-							</div>
+								<div class="path-draw-canvas">
+									
+									<div class="" id="path-start-deco">
+										<div class="pillow"></div>
+										<div class="number-box">
+											<p>?</p>
+										</div>
+										<div class="pillow-shadow"></div>
+									</div>
+									<svg id="PATH">
+									
+									</svg>	
+								</div>
 
+							</div>
 						</div>
 						<div class="station-info-holder">
 							<div class="station-info">
@@ -263,28 +265,56 @@
 									<h2 class="station-name">서울역</h2>
 								</div>
 							</div>
-							<div class="station-distance">
-								<h3>승강장과 열차 사이 간격</h3>
-								<div class="crevasse-svg-holder crevasse-svg-holder-up">
-									<h4>상선</h4>
-									<svg id="CREVASSE_UP" class="crevasse-svg">
-									</svg>
-								</div>
-								<div class="crevasse-svg-holder crevasse-svg-holder-down">
-									<h4>하선</h4>
-									<svg id="CREVASSE_DOWN" class="crevasse-svg">
-									</svg>
-								</div>
-							</div>
 							<div class="station-detail">
 								<div class="detail-box">
 									<p class="detail-words"><b>준공연도</b><span class="detail-answer detail-year">1992년</span></p>
-									<p class="detail-words"><b>발이 빠질 경우</b><span class="detail-answer detail-court">소송 패소</span></p>
+									<p class="detail-words"><b>이곳에서 발이 빠질 경우</b><span class="detail-answer detail-court">소송 패소</span></p>
 									<p class="detail-words"><b>이동안전발판</b><span class="detail-answer detail-board">있음</span></p>
 									<p class="detail-words"><b>원스톱 서비스</b><span class="detail-answer detail-service">운영 중</span></p>
 									<p class="detail-words"><b>발 빠짐 사고 발생</b><span class="detail-answer detail-accidents">총 1번</span></p>
 								</div>
 							</div>
+
+							<div class="station-distance">
+								<h3>승강장과 열차 사이 간격</h3>
+								<div class="legend">
+									<ul>
+										<li><span class="circle circle-01"></span>사고 1회</li>
+										<li><span class="circle circle-02"></span>사고 2회</li>
+										<li><span class="circle circle-03"></span>사고 3회</li>
+										<li><span class="circle circle-04"></span>사고 4회</li>
+									</ul>
+								</div>
+								<div class="crevasse-svg-holder crevasse-svg-holder-up">
+									<h4>상선</h4>
+									<svg id="CREVASSE_UP" class="crevasse-svg">
+									</svg>
+									<div class="tooltip tooltip-up">
+										<div class="tooltip-wrap">
+											<p class="each-platform-dis"><span class="number">1-1</span>번 승강장 간격 <span class="distance">120mm</span></p>
+											<p class="board-info-01">안전 발판 설치: <span class="value">X</span></p>
+											<p class="board-info-02">고무 발판 설치: <span class="value">X</span></p>
+										</div>
+									</div>
+								</div>
+								<div class="crevasse-svg-holder crevasse-svg-holder-down">
+									<h4>하선</h4>
+									<svg id="CREVASSE_DOWN" class="crevasse-svg">
+									</svg>
+									<div class="tooltip tooltip-down">
+										<div class="tooltip-wrap">
+											<p class="each-platform-dis"><span class="number">1-1</span>번 승강장 간격 <span class="distance">120mm</span></p>
+											<p class="board-info-01">안전 발판 설치: <span class="value">X</span></p>
+											<p class="board-info-02">고무 발판 설치: <span class="value">X</span></p>
+										</div>
+									</div>
+								</div>
+								
+								<div class="re-btn-holder">
+									<div class="re-button"><p>다른 역을 살펴보실래요?</p></div>
+								</div>
+							</div>
+							
 						</div>
 					</div>
 				</div>
