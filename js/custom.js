@@ -259,7 +259,7 @@ $(function(){
 		 $("#"+svgId).css({"width":svgWidth});
 
 
-        var defaultLine = "M 0 -1 L "+svgWidth+" -1z";
+        var defaultLine = "M 0 0 L "+svgWidth+" 0z";
         var defaultPathObj = document.getElementById(svgId).appendChild(document.createElementNS("http://www.w3.org/2000/svg", "path"));
         defaultPathObj.setAttributeNS(null,"d", defaultLine);
         defaultPathObj.setAttributeNS(null,"class", "default-line");
@@ -305,15 +305,14 @@ $(function(){
 					//console.log("해당 플랫폼 없음")
 					var tempTextObj = document.getElementById(svgId).appendChild(document.createElementNS("http://www.w3.org/2000/svg", "text"));
 					tempTextObj.innerHTML = "해당 역은 순환선으로 단일 승강장으로 운영";
-					tempTextObj.setAttributeNS(null,"transform", "translate("+ svgWidth/2+",80)");
+					tempTextObj.setAttributeNS(null,"transform", "translate("+ svgWidth/2+",60)");
 					tempTextObj.setAttributeNS(null, "class", "no-path-desc");
 
 				}else {
 					sang = svgWidth/(count-1);
 					//console.log(sang);
 					var k = 0;
-                    var polygonLine = "1000,0 0,0 ";
-
+					var polygonLine = "1000,0 0,0 ";
 					for (var key in v[keyStr]) { 
 						if(k==0){
 							tmpPath = "M 0 " + v[keyStr][key]["distance(mm)"];
@@ -333,6 +332,7 @@ $(function(){
 							tempTextObj.setAttributeNS(null, "class", "platform-number");
 						}
 
+						
 						var tempPlatformObj = platformHolderObj.appendChild(document.createElementNS("http://www.w3.org/2000/svg", "circle"));
 						tempPlatformObj.setAttributeNS(null,"cx", sang*k);
 						tempPlatformObj.setAttributeNS(null,"cy", v[keyStr][key]["distance(mm)"]);
@@ -369,16 +369,15 @@ $(function(){
 							accidentObj.setAttributeNS(null,"r", radius);
 							accidentObj.setAttributeNS(null, "class", "accidentCircle");
 						}
-
-                        polygonLine += sang*k + "," + v[keyStr][key]["distance(mm)"] + " ";
-
+						polygonLine += sang*k + "," + v[keyStr][key]["distance(mm)"] + " ";
 						k++;
 						count_accident += v[keyStr][key]["accidents"];
+
 					}
 
-                    var tempcrevassePolyObj = crevassePolyObj.appendChild(document.createElementNS("http://www.w3.org/2000/svg", "polygon"));
+					var tempcrevassePolyObj = crevassePolyObj.appendChild(document.createElementNS("http://www.w3.org/2000/svg", "polygon"));
                     tempcrevassePolyObj.setAttributeNS(null,"points", polygonLine);
-                    tempcrevassePolyObj.setAttributeNS(null,"class", "crevasse-poly");
+                    tempcrevassePolyObj.setAttributeNS(null,"class", "crevasse-poly crevasse-poly-line0"+keepLine);
 
 					if (max_dist > 150) {
                         $("#"+svgId).css('height', max_dist +'px');
