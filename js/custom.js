@@ -278,6 +278,9 @@ $(function(){
 		descTextObj.setAttributeNS(null,"transform", "translate(-30,105)");
 		descTextObj.setAttributeNS(null, "class", "desc-text");
 
+        var crevassePolyObj = document.getElementById(svgId).appendChild(document.createElementNS("http://www.w3.org/2000/svg", "g"));
+        crevassePolyObj.setAttributeNS(null,"class", "crevasse-poly-holder");
+
 		var accCircleObj = document.getElementById(svgId).appendChild(document.createElementNS("http://www.w3.org/2000/svg", "g"));
 		accCircleObj.setAttributeNS(null,"class", "acc-circle-holder");
 
@@ -309,6 +312,8 @@ $(function(){
 					sang = svgWidth/(count-1);
 					//console.log(sang);
 					var k = 0;
+                    var polygonLine = "1000,0 0,0 ";
+
 					for (var key in v[keyStr]) { 
 						if(k==0){
 							tmpPath = "M 0 " + v[keyStr][key]["distance(mm)"];
@@ -328,7 +333,6 @@ $(function(){
 							tempTextObj.setAttributeNS(null, "class", "platform-number");
 						}
 
-						
 						var tempPlatformObj = platformHolderObj.appendChild(document.createElementNS("http://www.w3.org/2000/svg", "circle"));
 						tempPlatformObj.setAttributeNS(null,"cx", sang*k);
 						tempPlatformObj.setAttributeNS(null,"cy", v[keyStr][key]["distance(mm)"]);
@@ -365,10 +369,17 @@ $(function(){
 							accidentObj.setAttributeNS(null,"r", radius);
 							accidentObj.setAttributeNS(null, "class", "accidentCircle");
 						}
+
+                        polygonLine += sang*k + "," + v[keyStr][key]["distance(mm)"] + " ";
+
 						k++;
 						count_accident += v[keyStr][key]["accidents"];
-
 					}
+
+                    var tempcrevassePolyObj = crevassePolyObj.appendChild(document.createElementNS("http://www.w3.org/2000/svg", "polygon"));
+                    tempcrevassePolyObj.setAttributeNS(null,"points", polygonLine);
+                    tempcrevassePolyObj.setAttributeNS(null,"class", "crevasse-poly");
+
 					if (max_dist > 150) {
                         $("#"+svgId).css('height', max_dist +'px');
                     }
