@@ -224,7 +224,7 @@ $(function(){
     });
 
 	function init(){
-		
+		activataTw();
 	};
     
     init();
@@ -473,7 +473,21 @@ $(function(){
 		$(".crevasse-svg").css({"height":"150px"});
 	}
 	
+    var twActiveDone = false; 
+	function activataTw(){
+		$("#TT_HOLDER_01").twentytwenty();
+		
+         console.log("activate tt");
+	};
 
+	$(window).scroll(function(){
+		var nowScroll = $(window).scrollTop();
+		if(nowScroll > $(".tt-slider").offset().top && twActiveDone ==false){
+			activataTw();
+			twActiveDone = true;
+		}
+	});
+			
 });
 
 function sendSns(s) {
