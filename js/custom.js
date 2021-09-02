@@ -480,12 +480,55 @@ $(function(){
          console.log("activate tt");
 	};
 
+	// check graphic stage
+	var graphicStage;
+	var $graphic = $(".illust-book-layout");
+	function adjustStage(g){
+		if( graphicStage == g){
+		}else if( graphicStage !==g ){
+			graphicStage = g;
+			console.log(g)
+			$graphic.removeClass("illust-book-layout-animation");
+			if(g < 0){
+			
+			}else{
+				$graphic.eq(g-1).addClass("illust-book-layout-animation");
+			}
+		}
+	};
+
+	function checkGraphicStage(n){
+		var $gStagePoint = $(".illust-book-layout");
+		var n;
+		if( n < $gStagePoint.eq(0).position().top){ 
+			adjustStage(-1); //이전
+ 		}else if( n >= $gStagePoint.eq($gStagePoint.length-1).position().top ){
+			adjustStage($gStagePoint.length);
+		}else if( n >= $gStagePoint.eq(0).position().top && n < $gStagePoint.eq($gStagePoint.length-1).position().top){
+			for(g=0;g<$gStagePoint.length-1;g++){
+				if( n >= $gStagePoint.eq(g).position().top && n <$gStagePoint.eq(g+1).position().top){
+					adjustStage(g+1);
+				}
+			}
+		}
+	}
+
 	$(window).scroll(function(){
 		var nowScroll = $(window).scrollTop();
 		if(nowScroll > $(".tt-slider").offset().top && twActiveDone ==false){
 			activataTw();
 			twActiveDone = true;
 		}
+		checkGraphicStage(nowScroll);
+
+		$(".hideme").each(function(i){
+			if( $(this).hasClass("shown") == false && nowScroll + screenHeight > $(this).offset().top + $(this).outerHeight()*0.5 ){
+				$(this).addClass("shown")
+				$(this).stop().animate({"opacity":1},1000);
+			}
+		});
+
+
 	});
 			
 });
