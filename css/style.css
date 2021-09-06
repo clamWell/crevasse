@@ -639,6 +639,66 @@ body.scrollOff{position:fixed;overflow:hidden;height:100%;}
 .interactive-header{ height: 40px;padding: 0px 5px; }
 .interactive-header .khan_btn img { width:80px; }
 
+/*수민 추가*/
+.intro-graphic-holder { width: 100%; }
+.platform-footsign img { width: 100%; }
+.subway-door img {width: 100%;}
+.platform-side {padding: 5px;}
+.platform-footsign {padding: 20px;}
+.intro-graphic-holder .gap { height: 50px;}
+.foot-left img {width: 55px;}
+.foot-right img {width: 55px;}
+.intro-graphic-holder .platform .platform-body .human-foot {width: 150px; margin-left: -80px;}
+.story-title .title-background {min-height: 300px;}
+.title-text .page-main-title { width: 100%;}
+.title-text .page-main-title img { width: 95%;}
+.title-text .page-main-title .title-falling { right: 85px;}
+.title-text .page-main-title .title-falling img { width: 65px;}
+.title-text .page-sub-title{ margin-top: 10px; font-size: 16px;}
+.story-title { margin-bottom: 70px;}
+
+/* .img-holder-col-2 .col-holder > img:nth-child(1) {display: none;} */
+
+.para-docu img { width: 95%; box-sizing: border-box;}
+.illust-book-layout .col-2 .each-col {width: 100%; float: none;}
+.illust-book-layout .col-2 .col-illust img { height: 100%; width: 100%;}
+.illust-book-layout .col-2 .col-illust .illust-holder { border-radius: 0%;}
+.illust-book-layout-animation .story01 .person img { height: 250px;}
+.illust-book-layout-animation .story03 .wheel img { width: 62%;}
+.story03 .wheel {top: 60px; right: -2px;}
+#S01_03 img {border: none;}
+.img-holder .graphic-title { font-size: 21px;}
+.tt-silder-des { font-size: 13px;}
+.tt-slider { width: 95%;}
+.img-holder .img-des { margin: 20px 10px;}
+.img-holder-col-2 .col-holder > img { float: none; width: 100%; margin: 10px auto;}
+.graph--pie > img { width: 50%; float: left; margin-bottom: 10px;}
+
+.para-holder .time-watch { position: relative; top: 0; left: 0; display: inline-block; margin-left: 10px;}
+.para-holder-with-time-watch { left: 0;}
+.metro-area .img-holder > img {border-radius: 0%;}
+
+.para-holder p.title {margin: 10px 14px;}
+
+.chat-format { padding: 25px 20px;}
+.each-chat-left { max-width: 100%;}
+.each-chat-right { max-width: 100%; left: 0;}
+#S02_08 img {border-radius: 0;}
+.each-chat-box > div { display: block;}
+.each-chat-box .chat-balloon p { font-size: 15px;}
+.each-chat-box .chat-balloon .balloon { padding: 15px;}
+.each-chat-box .chat-balloon { padding: 0;}
+.each-chat-box .thumb { position: relative; margin-bottom: 10px; }
+.each-chat-box .thumb .name { position: absolute; width: 120px; bottom: 2px;}
+.each-chat-right .thumb {position:absolute; top: 0px; right: 0px;}
+.each-chat-right .thumb .name { right: 75px; text-align: right;}
+.each-chat-left .thumb .name {left: 75px; text-align: left;}
+.each-chat-right {padding-top: 70px;}
+
+#S03_02 img {border-radius: 0;}
+
+/*수민 여기까지*/
+
 .top-byline { margin-top: 15px; opacity: 0.6;}
 .top-byline .top-border p { font-size:12px; }
 .each-sec { padding: 0;padding-bottom: 50px;}
@@ -648,9 +708,6 @@ body.scrollOff{position:fixed;overflow:hidden;height:100%;}
 .img-holder > img {width: 100%;}
 .img-holder { margin: 35px auto; }
 .img-holder .caption { width: 100%; box-sizing: border-box; padding: 0px 12px;  font-size: 13px; margin-top: 5px; text-align: left;opacity: 0.6;}
-
-
-
 
 .bottom-byline { margin-top:0;}
 .rel-article { padding: 20px 15px;  box-sizing: border-box;}
