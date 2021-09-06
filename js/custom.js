@@ -70,7 +70,8 @@ $(function(){
 		})
 		return code; 
 	};
-
+		
+	var count_accident;
     function makePath(line){
         var line = line || 1;
         console.log(line + "호선 그리기")
@@ -196,7 +197,7 @@ $(function(){
 		$(".station-group").on("click", function(){
 			//console.log( $(this).attr("data-st-code"));
 			var code = $(this).attr("data-st-code");
-			var count_accident = 0;
+			count_accident = 0;
 			nowStation = code;
 			count_accident = drawCrevassePath(code, "up", count_accident);
 			count_accident = drawCrevassePath(code, "down", count_accident);
@@ -206,22 +207,70 @@ $(function(){
 			$("html, body").animate({scrollTop: movePos-70},1200, "easeOutCubic");
 		});
 
-
-
     }
 
     
 	var nowMetroLine;
+	var nowStationName;
 	var nowStationCode;
 	var nowStationData;
 
     $("#METRO_BTN ul li").on("click", function(){
+		$("#METRO_BTN ul li").removeClass("on");
+		$(this).addClass("on");
 		resetStationInfo();
         var userC_line = $(this).attr("data-id");    
         userC_line = userC_line.replace("s_", ""); 
 		nowMetroLine = userC_line;
-        makePath(userC_line);
+		if(isMobile){
+			 makeSelectOpt(userC_line);
+		}else{
+			 makePath(userC_line);
+		}
     });
+
+	var $Body = $("#STATION_LIST");
+	function makeSelectOpt(line){
+		var line = line || 1; 
+		console.log(line + "호선 그리기")
+        keepLine = line;
+        var st_data = new Array; 
+        lineData.forEach(function(v,i,a){
+            if(v.line == line && v.safe == "X"){
+                st_data.push(v.station)
+            }
+        });
+		$Body.find("option").remove();
+		st_data.forEach(function(v,i,a){
+			var code = getStationCode(line, v);
+			$Body.append("<option value='" +  code + "'>" + v + "</option>");
+		});		
+
+		$Body.prepend("<option value='선택'> 지하철역 선택 </option>");
+		$Body.find("option").eq(0).attr("selected", "selected");
+
+		$(".mobile-station-select-list").slideDown(300, "easeOutCubic");
+	};	
+
+	$Body.on("change", function(){
+		nowStationName = null;
+		if ($(this).children("option:selected").index() == 0){ 
+			
+			return;
+		}else {
+			nowStationCode = $(this).val();
+			code = nowStationCode;
+			count_accident = 0; 
+			count_accident = drawCrevassePath(code, "up", count_accident);
+			count_accident = drawCrevassePath(code, "down", count_accident);
+            $(".detail-accidents").html("총 "+ count_accident +"번");
+			$(".station-info-holder").show();
+			var movePos = $(".station-info-holder").offset().top;
+			$("html, body").animate({scrollTop: movePos-70},1200, "easeOutCubic");
+		}					
+	});
+
+
 
 	function init(){
 		activataTw();
@@ -254,7 +303,7 @@ $(function(){
         $("#"+svgId).html("");
         var stationName = $(this).text();
 		
-		var svgWidth = 1000;
+		var svgWidth = (isMobile)? 800 : 1000;
 		 $("#"+svgId).css({"width":svgWidth});
 
         var defaultLine = "M 0 0 L "+svgWidth+" 0z";
@@ -268,7 +317,7 @@ $(function(){
 		defaultTextObj.setAttributeNS(null, "class", "defalut-text");
 		
 		var descPathObj = document.getElementById(svgId).appendChild(document.createElementNS("http://www.w3.org/2000/svg", "path"));
-		descPathObj.setAttributeNS(null,"d", "M 0 100 L 1000 100z");
+		descPathObj.setAttributeNS(null,"d", "M 0 100 L "+svgWidth+" 100z");
 		descPathObj.setAttributeNS(null,"class", "desc-path");
 
 		var descTextObj = document.getElementById(svgId).appendChild(document.createElementNS("http://www.w3.org/2000/svg", "text"));
@@ -310,7 +359,8 @@ $(function(){
 					sang = svgWidth/(count-1);
 					//console.log(sang);
 					var k = 0;
-					var polygonLine = "1000,0 0,0 ";
+					var polygonLine = svgWidth+",0 0,0 ";
+					
 					for (var key in v[keyStr]) { 
 						if(k==0){
 							tmpPath = "M 0 " + v[keyStr][key]["distance(mm)"];
@@ -341,7 +391,11 @@ $(function(){
 						if( v[keyStr][key]["wheel_enter"] =="*"){
 							var signLogoObj = document.getElementById(svgId).appendChild(document.createElementNS("http://www.w3.org/2000/svg", "path"));
 							signLogoObj.setAttributeNS(null,"d", signPath);
-							signLogoObj.setAttributeNS(null,"transform", "translate("+ (sang*k-8)+",-37)");
+							if(isMobile){
+								signLogoObj.setAttributeNS(null,"transform", "translate("+ (sang*k-8)+",-25)");
+							}else{
+								signLogoObj.setAttributeNS(null,"transform", "translate("+ (sang*k-8)+",-37)");
+							}
 							signLogoObj.setAttributeNS(null, "class", "sign");
 
 							var signPathObj = document.getElementById(svgId).appendChild(document.createElementNS("http://www.w3.org/2000/svg", "path"));
@@ -380,11 +434,15 @@ $(function(){
 					if (max_dist > 150) {
                         $("#"+svgId).css('height', max_dist +'px');
                     }else{
-						$("#"+svgId).css('height', '150px');
+						if(isMobile){
+							$("#"+svgId).css('height', '150px');
+						}else{
+							$("#"+svgId).css('height', '150px');
+						}
 					}
                     if (max_dist > 200) {
                         var descPathObj_2 = document.getElementById(svgId).appendChild(document.createElementNS("http://www.w3.org/2000/svg", "path"));
-		                descPathObj_2.setAttributeNS(null,"d", "M 0 200 L 1000 200z");
+		                descPathObj_2.setAttributeNS(null,"d", "M 0 200 L "+svgWidth+" 200z");
 		                descPathObj_2.setAttributeNS(null,"class", "desc-path");
 
                         var descTextObj_2 = document.getElementById(svgId).appendChild(document.createElementNS("http://www.w3.org/2000/svg", "text"));

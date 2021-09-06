@@ -726,12 +726,12 @@ var lineData = [
   },
   {
     "line": 9,
-    "station": "언주역",
+    "station": "언주",
     "safe": "X"
   },
   {
     "line": 9,
-    "station": "삼성중앙역",
+    "station": "삼성중앙",
     "safe": "X"
   }
 ];

@@ -291,7 +291,6 @@
 								<img src="img/metro-line-after2004.jpg" alt="">
 							</div>
 							<p class="caption">(좌)서울교통공사가 관리·운영하는 역 노선도 (우)2005년 이후 착공된 역의 노선도</p>
-							<p class="img-des">전체 노선도에서 10㎝ 룰이 적용되지 않는 역(2005년 이전 착공)을 지워보았다. 297곳 중 28곳의 역이 노선도에 남았다.</p>
 						</div>
 
 						<div class="para-holder">
@@ -364,7 +363,7 @@
 						</div>
 						<div class="metro-select-info-border">
 							<div class="metro-select-area">
-								<h2 class="metro-select-title">내가 자주 이용하는 역은 안전할까? 직접 연단 간격을 확인해보세요</h2>
+								<h2 class="metro-select-title">내가 자주 이용하는 역은 안전할까? <span class="jump">직접 연단 간격을 확인해보세요</span></h2>
 								<div class="desc">*전체 승강장 중 <b>열차와의 간격이 100mm이상인</b> 승강장이 하나라도 있는 역만 뽑아 정렬했습니다</div>
 								<div class="metro-select-holder">
 									<div class="btn-holder metro-btn" id="METRO_BTN">
@@ -396,6 +395,17 @@
 										</svg>	
 									</div>
 
+									<div class="mobile-station-select-list">
+										<div class="search-panel-wrapper">
+											<div class="search-panel">
+												<select id="STATION_LIST" name="station-list" class="srch_opt">
+													<option value="선택" selected="selected"> 지하철역 선택 </option>
+													<option value="지하철역">지하철역</option>
+												</select>
+											</div>
+										</div>
+									</div>
+
 								</div>
 							</div>
 							<div class="station-info-holder">
@@ -412,25 +422,28 @@
 								<div class="station-distance">
 									<h3>승강장과 열차 사이 간격</h3>
 								
-							
-									<div class="crevasse-svg-holder crevasse-svg-holder-up">
-										<h4>상선 (<span class="dir"></span>)</h4>
-										<svg id="CREVASSE_UP" class="crevasse-svg">
-										</svg>
-										<div class="tooltip tooltip-up">
-											<div class="tooltip-wrap">
-												<p class="each-platform-dis"><span class="number">1-1</span> 간격 <span class="distance">120mm</span></p>
-			
+									<div class="crevasse-scroll">
+										<div class="crevasse-svg-holder crevasse-svg-holder-up">
+											<h4>상선 (<span class="dir"></span>)</h4>
+											<svg id="CREVASSE_UP" class="crevasse-svg">
+											</svg>
+											<div class="tooltip tooltip-up">
+												<div class="tooltip-wrap">
+													<p class="each-platform-dis"><span class="number">1-1</span> 간격 <span class="distance">120mm</span></p>
+				
+												</div>
 											</div>
 										</div>
 									</div>
-									<div class="crevasse-svg-holder crevasse-svg-holder-down">
-										<h4>하선 (<span class="dir"></span>)</h4>
-										<svg id="CREVASSE_DOWN" class="crevasse-svg">
-										</svg>
-										<div class="tooltip tooltip-down">
-											<div class="tooltip-wrap">
-												<p class="each-platform-dis"><span class="number">1-1</span> 간격 <span class="distance">120mm</span></p>
+									<div class="crevasse-scroll">
+										<div class="crevasse-svg-holder crevasse-svg-holder-down">
+											<h4>하선 (<span class="dir"></span>)</h4>
+											<svg id="CREVASSE_DOWN" class="crevasse-svg">
+											</svg>
+											<div class="tooltip tooltip-down">
+												<div class="tooltip-wrap">
+													<p class="each-platform-dis"><span class="number">1-1</span> 간격 <span class="distance">120mm</span></p>
+												</div>
 											</div>
 										</div>
 									</div>
@@ -467,20 +480,6 @@
 						</div>
 						
 						<div class="metro-area">
-							<!--<div class="position-time-holder">
-								<div class="metro-position-graphic part01">
-									<div class="metro-back">
-										<img src="img/metro-part-01.png" alt="지하철 노선도 일부분">
-									</div>
-									<div class="now-pos"><img src="https://img.khan.co.kr/spko/storytelling/2018/big/here.png" alt="현재위치"></div>
-								</div>
-								<div class="time-graphic">
-									<div class="time-watch">
-										<img src="img/time-0213.png" alt="02:13">
-									</div>
-								</div>
-							</div>-->
-<!-- 수민 수정 -->
 							<div class="para-holder para-holder-with-time-watch">
 								<div class="time-watch">
 									<img src="img/time-0213.png" alt="02:13">
@@ -554,8 +553,6 @@
 							</div>
 						</div>
 
-<!-- 수민 수정 -->
-
 						<div class="para-holder">
 							<p>서비스는 이용자에게 좋은 점수를 받지 못하고 있다. 한국장애인단체총연맹·접근가능한관광네트워크가 지난 6월28~30일 실시한 온라인 설문조사에서 서울 지하철을 이용한 경험이 있는 장애인 160명 중 62명<span class="semi">(38.8%)</span>이 교통약자 이동도우미 서비스에 대해 ‘불만족<span class="semi">(매우 불만족+불만족)</span>’한다고 답했다. ‘만족<span class="semi">(매우 만족+만족)</span>’ 응답은 32명<span class="semi">(20%)</span>이었다.</p>
 							<p>불만족 이유는 ‘역과 전화가 안된다<span class="semi">(25.6%)</span>’, ‘안전발판이나 서비스 인력이 없다<span class="semi">(23.8%)</span>’, ‘불친절하다<span class="semi">(6.2%)</span>’ 순이었다.</p>
@@ -589,7 +586,7 @@
 					<div class="each-sec sec--03">
 						<div class="sec-title">
 							<p class="numb">03</p>
-							<p class="title">자동안전발판이 4년째 감감무소식인 이유</p>
+							<p class="title">자동안전발판이 4년째 <span class="jump"></span>감감무소식인 이유</span></p>
 						</div>
 						<div class="para-holder">
 							<p class="ment">“지하철 승강장 안전발판 설치에 따라 승강장과 지하철 간격이 3cm 이내로 유지하게 돼 지하철 승·하차시 실족 사고가 획기적으로 줄어들 것으로 기대된다.”</p>

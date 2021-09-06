@@ -314,7 +314,7 @@ h2.metro-select-title  { text-align: center; margin-bottom: 5px; font-size: 26px
 .metro-btn ul li  { display: inline-block; box-sizing:border-box; padding: 5px 10px; font-family: 'Noto Sans KR'; font-size: 16px; cursor: pointer;
 border-radius: 4px;margin: 0px 2px; opacity: 0.7; background: #fff; color: #111;border: 2px solid #111;font-weight: bold;}
 .metro-btn ul li:hover { opacity: 1; box-shadow: 2px 2px 7px rgba(0,0,0,0.3);}
-.metro-btn ul li.on { background:#111; opacity:1; color:#fff; }
+.metro-btn ul li.on { opacity:1; background: #eff0f5; box-shadow: 2px 2px 7px rgba(0,0,0,0.3); }
 .metro-btn p.des {margin-top: 10px;font-size: 14px; opacity: 0.7; text-align: center; }
 .path-draw-canvas{position: relative;  max-width: 1000px; margin: 0px auto;  margin-bottom: 30px; }
 .path-draw-canvas > div {position: relative;left: -7px;}
@@ -536,7 +536,9 @@ span.station {color: #111; font-weight: bold; background: #e6f3e7;border-radius:
 .each-chat-right .chat-balloon p { }
 
 
+.mobile-station-select-list { display:none;}
 .hideme { opacity:0; }
+
 
 /** fixed Navi **/
 .fixed-navi {position: fixed; right: 10px;top: 50%;margin-top: -250px; right: -200px;
@@ -639,7 +641,71 @@ body.scrollOff{position:fixed;overflow:hidden;height:100%;}
 .interactive-header{ height: 40px;padding: 0px 5px; }
 .interactive-header .khan_btn img { width:80px; }
 
+.top-byline { margin-top: 15px; opacity: 0.6;}
+.top-byline .top-border p { font-size:12px; }
+.each-sec { padding: 0;padding-bottom: 50px;}
+.para-holder { margin: 40px auto; /* font-weight: 400; */ } 
+.para-holder p { font-size: 16.5px; box-sizing: border-box; padding: 0px 15px;  word-break: break-all;}
+.para-holder p.sm {font-size:13px;}
+.img-holder > img {width: 100%;}
+.img-holder { margin: 35px auto; }
+.img-holder .caption { width: 100%; box-sizing: border-box; padding: 0px 12px;  font-size: 13px; margin-top: 5px; text-align: left;opacity: 0.6;}
+
+
+
+/****** YJ 모바일추가 ********/
+.path-draw-canvas { display:none; }
+.metro-btn {  position: relative; top: 0; left: 0; margin-left: 0;}
+h2.metro-select-title {text-align: left;  font-size: 20px; width: 100%; box-sizing: border-box; padding: 0px 15px;}
+h2.metro-select-title .jump { display:block; }
+.metro-select-holder { padding: 20px 0;padding-bottom: 0; }
+.metro-btn ul { text-align: left;width: 100%; box-sizing: border-box; padding: 0px 12px; }
+.metro-btn ul li {margin: 3px 2px; font-size:14px;  opacity: 1; }
+.metro-select-area .desc { text-align: left;  font-size: 13px; width: 100%; box-sizing: border-box; padding: 0px 12px; text-align: left;  opacity: 0.6; }
+.metro-btn ul .btn_line_1 { border: 2px solid #0a3190; }
+.metro-btn ul .btn_line_2 { border: 2px solid #00a547; }
+.metro-btn ul .btn_line_3 { border: 2px solid #f08300;}
+.metro-btn ul .btn_line_4 { border: 2px solid #00a1e9; }
+.metro-btn ul .btn_line_5 { border: 2px solid #a54a9a;}
+.metro-btn ul .btn_line_6 { border: 2px solid #d08e1d; }
+.metro-btn ul .btn_line_7 { border: 2px solid #657536; }
+.metro-btn ul .btn_line_8 { border: 2px solid #e9506f; }
+.metro-btn ul .btn_line_9 { border: 2px solid #c49b26;}
+.metro-btn ul li:hover { box-shadow: auto; }
+
+.mobile-station-select-list {width:100%; margin: 30px auto;}
+.metro-btn p.des { display:none; }
+.search-panel-wrapper { width:100%;box-sizing: border-box;  padding: 0px 12px;  }
+.search-panel-wrapper .search-panel{ width:100%;}
+.srch_opt { cursor:pointer; box-sizing: border-box; width: 100%; background: #fff; border-radius: 5px; border: 1px solid #222; 
+padding: 10px; color: #3a3f44; font-weight: 500;font-size: 16px; line-height: 18px; text-align: center;
+font-family: 'Noto Sans KR', 'Apple SD Gothic Neo','맑은 고딕', Malgun Gothic, '돋움', Dotum, Helvetica, AppleGothic, Sans-serif;  }
+.srch_opt option { font-size: 14px; color:#777; padding: 5px 0; display: block; }
+.srch_opt:active  { }
+.name-holder h2.station-name { font-size: 24px; }
+.station-info-holder { padding-top:20px; }
+.station-detail .detail-words { font-size: 16px; }
+.station-detail p.semi { margin-top: 0px;font-size: 13px; opacity: 0.5;}
+.station-distance h3 { font-size: 16px; }
+.crevasse-svg { margin: 20px 0; margin-bottom: 0; position: relative; left: 0; box-sizing: border-box; padding-left: 70px;}
+.crevasse-svg-holder {  width: 920px;  }
+.crevasse-svg-holder h4 {  text-align: left;font-size: 14px;margin-bottom: 50px; box-sizing: border-box; width: 100%; padding-left: 15px;border-left: 3px solid #494949; margin-left: 20px; line-height: 1; }
+.crevasse-scroll {width: 100%; overflow-x: scroll;  overflow-y: hidden;}
+.crevasse-svg .desc-text { font-size: 11px; }
+.crevasse-svg .defalut-text { font-size: 11px;}
+.legend{width: 100%;margin-right: 0;  max-width: inherit;  transform: scale(0.9); transform-origin: top left;}
+.legend ul li{  margin: 0px 2px;}
+.re-btn-holder { margin-top: 30px; }
+.re-btn-holder .re-button { width: 90%;  padding: 20px 0;}
+.re-btn-holder .re-button p { font-size: 16px;opacity:1; }
+/****** YJ 모바일추가  *********/
+
+
 /*수민 추가*/
+.sec-title .numb {font-size: 60px;line-height: 90px;}
+.sec-title .title {font-size: 20px;}
+.sec-title .title span.jump { display:block; }
+.para-holder p.ment {font-size: 17px; line-height: 1.6;}
 .intro-graphic-holder { width: 100%; }
 .platform-footsign img { width: 100%; }
 .subway-door img {width: 100%;}
@@ -656,58 +722,47 @@ body.scrollOff{position:fixed;overflow:hidden;height:100%;}
 .title-text .page-main-title .title-falling img { width: 65px;}
 .title-text .page-sub-title{ margin-top: 10px; font-size: 16px;}
 .story-title { margin-bottom: 70px;}
-
-/* .img-holder-col-2 .col-holder > img:nth-child(1) {display: none;} */
-
 .para-docu img { width: 95%; box-sizing: border-box;}
-.illust-book-layout .col-2 .each-col {width: 100%; float: none;}
+.illust-book-layout { height: auto; }
+.illust-book-layout .col-2 .each-col {width: 100%; float: none; top: 0; }
 .illust-book-layout .col-2 .col-illust img { height: 100%; width: 100%;}
 .illust-book-layout .col-2 .col-illust .illust-holder { border-radius: 0%;}
 .illust-book-layout-animation .story01 .person img { height: 250px;}
 .illust-book-layout-animation .story03 .wheel img { width: 62%;}
+.layout-blackThem {  background: #030000; box-sizing: border-box; padding: 20px 0px; }
 .story03 .wheel {top: 60px; right: -2px;}
 #S01_03 img {border: none;}
-.img-holder .graphic-title { font-size: 21px;}
+.img-holder .graphic-title { font-size: 18px;}
 .tt-silder-des { font-size: 13px;}
-.tt-slider { width: 95%;}
-.img-holder .img-des { margin: 20px 10px;}
-.img-holder-col-2 .col-holder > img { float: none; width: 100%; margin: 10px auto;}
-.graph--pie > img { width: 50%; float: left; margin-bottom: 10px;}
-
+.tt-slider {  width: 100%; border:none; border-top: 1px solid #111; border-bottom: 1px solid #111; border-radius: 0;}
+.img-holder .img-des { margin: 20px 10px;  font-size: 14px;   line-height: 1.6;color: #5f5d5d;padding: 15px;background: #f3f3f3;border:none;}
+.img-holder-col-2 .col-holder > img { float: none; width: 100%; margin: 5px auto;border-radius: 0;}
+.graph--pie > img { width: 80%; max-width: 300px; float: none; margin-bottom: 10px;}
 .para-holder .time-watch { position: relative; top: 0; left: 0; display: inline-block; margin-left: 10px;}
 .para-holder-with-time-watch { left: 0;}
 .metro-area .img-holder > img {border-radius: 0%;}
-
-.para-holder p.title {margin: 10px 14px;}
-
-.chat-format { padding: 25px 20px;}
-.each-chat-left { max-width: 100%;}
-.each-chat-right { max-width: 100%; left: 0;}
+.para-holder p.title {margin: 10px 14px; margin-right:0; font-size:18px;  word-break: keep-all;}
+.chat-format { padding: 25px 12px;}
+.each-chat-left { max-width: 90%;}
+.each-chat-right { max-width: 90%; left: 10%;}
 #S02_08 img {border-radius: 0;}
 .each-chat-box > div { display: block;}
 .each-chat-box .chat-balloon p { font-size: 15px;}
 .each-chat-box .chat-balloon .balloon { padding: 15px;}
 .each-chat-box .chat-balloon { padding: 0;}
-.each-chat-box .thumb { position: relative; margin-bottom: 10px; }
-.each-chat-box .thumb .name { position: absolute; width: 120px; bottom: 2px;}
+.each-chat-box .thumb { position: relative; margin-bottom: 10px; width: 40px; }
+.each-chat-box .thumb-round { width: 40px; height: 40px; }
+.each-chat-box .thumb-round img { width: 100%; }
+.each-chat-box .thumb .name { position: absolute; width: 200px; bottom: 0px;}
 .each-chat-right .thumb {position:absolute; top: 0px; right: 0px;}
-.each-chat-right .thumb .name { right: 75px; text-align: right;}
-.each-chat-left .thumb .name {left: 75px; text-align: left;}
-.each-chat-right {padding-top: 70px;}
-
+.each-chat-box .thumb .name{ font-size: 12.5px;}
+.each-chat-right .thumb .name { right: 45px; text-align: right;}
+.each-chat-left .thumb .name {left: 45px; text-align: left;}
+.each-chat-right {padding-top: 50px;}
 #S03_02 img {border-radius: 0;}
-
 /*수민 여기까지*/
 
-.top-byline { margin-top: 15px; opacity: 0.6;}
-.top-byline .top-border p { font-size:12px; }
-.each-sec { padding: 0;padding-bottom: 50px;}
-.para-holder { margin: 40px auto; /* font-weight: 400; */ } 
-.para-holder p { font-size: 16.5px; box-sizing: border-box; padding: 0px 15px;  word-break: break-all;}
-.para-holder p.sm {font-size:14px;}
-.img-holder > img {width: 100%;}
-.img-holder { margin: 35px auto; }
-.img-holder .caption { width: 100%; box-sizing: border-box; padding: 0px 12px;  font-size: 13px; margin-top: 5px; text-align: left;opacity: 0.6;}
+
 
 .bottom-byline { margin-top:0;}
 .rel-article { padding: 20px 15px;  box-sizing: border-box;}
