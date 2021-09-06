@@ -656,7 +656,7 @@ body.scrollOff{position:fixed;overflow:hidden;height:100%;}
 .each-sec { padding: 0;padding-bottom: 30px;}
 .sec-title { margin-bottom:0; }
 .para-holder { margin: 40px auto; /* font-weight: 400; */ } 
-.para-holder p { font-size: 16.5px; box-sizing: border-box; padding: 0px 15px;  word-break: break-all;}
+.para-holder p { font-size: 16.5px; box-sizing: border-box; padding: 0px 10px;  word-break: break-all;}
 .para-holder p.sm {font-size:13px;}
 .img-holder > img {width: 100%;}
 .img-holder { margin: 35px auto; }
@@ -693,8 +693,8 @@ h2.metro-select-title .jump { display:block; }
 .station-distance h3 { font-size: 16px; }
 .crevasse-svg { margin: 20px 0; margin-bottom: 0; position: relative; left: 0; box-sizing: border-box; padding-left: 70px;}
 .crevasse-svg-holder {  width: 920px;  }
-.crevasse-svg-holder h4 {  text-align: left; margin-bottom: 50px; box-sizing: border-box; width: 100%; 
-padding-left: 15px;border-left: 3px solid #494949; margin-left: 20px; line-height: 1; font-size: 14px !important;}
+.crevasse-svg-holder h4 {  text-align: left; margin-bottom: 50px; box-sizing: border-box; width: 100%; -webkit-text-size-adjust:100%;
+padding-left: 15px;border-left: 3px solid #494949; margin-left: 20px; line-height: 1; font-size: 14px !important;font-size: small;}
 .crevasse-scroll {width: 100%; overflow-x: scroll;  overflow-y: hidden; position: relative;}
 .crevasse-svg .desc-text { font-size: 11px; }
 .crevasse-svg .defalut-text { font-size: 11px;}

@@ -26,7 +26,7 @@ if ((navigator.appName == 'Netscape' && agent.indexOf('trident') != -1) || (agen
 /******** 모바일 전용 조정 ********/
 if(isMobile==true){
 
-	$(".title-text").html("여기서 발이 빠지면 '내 탓'입니다")
+	$(".interactive-header .page-title .title-text").html("여기서 발이 빠지면 '내 탓'입니다")
 }
 /******** 모바일 전용 조정 ********/
 
