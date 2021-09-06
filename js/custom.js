@@ -14,10 +14,19 @@ function avoid100vh(){
 	$(".ie-block").height(screenHeight);
 }
 
+var agent = navigator.userAgent.toLowerCase();
+if ((navigator.appName == 'Netscape' && agent.indexOf('trident') != -1) || (agent.indexOf("msie") != -1)) {
+	ieTest = true;
+	console.log("IE")
+} else {
+	ieTest = false;
+}
+
 
 /******** 모바일 전용 조정 ********/
 if(isMobile==true){
-	
+
+	$(".title-text").html("여기서 발이 빠지면 '내 탓'입니다")
 }
 /******** 모바일 전용 조정 ********/
 
@@ -60,6 +69,9 @@ $(function(){
     } 
     checkIe();
 
+
+
+
 	function getStationCode(line, station){
 		var code; 
 		station_info.forEach(function(v,i,a){
@@ -74,7 +86,7 @@ $(function(){
 	var count_accident;
     function makePath(line){
         var line = line || 1;
-        console.log(line + "호선 그리기")
+       // console.log(line + "호선 그리기")
         keepLine = line;
         var st_data = new Array; 
         lineData.forEach(function(v,i,a){
@@ -82,7 +94,7 @@ $(function(){
                 st_data.push(v.station)
             }
         });
-        console.log(st_data);
+       // console.log(st_data);
         $(".path-draw-canvas .number-box p").html(line+"호선");
         $(".path-draw-canvas #path-start-deco").removeClass();
         $(".path-draw-canvas #path-start-deco").addClass("deco0"+line)
@@ -222,7 +234,7 @@ $(function(){
         var userC_line = $(this).attr("data-id");    
         userC_line = userC_line.replace("s_", ""); 
 		nowMetroLine = userC_line;
-		if(isMobile){
+		if(isMobile || ieTest){
 			 makeSelectOpt(userC_line);
 		}else{
 			 makePath(userC_line);
@@ -300,7 +312,7 @@ $(function(){
 		}
 
 
-        $("#"+svgId).html("");
+        $("#"+svgId).empty();
         var stationName = $(this).text();
 		
 		var svgWidth = (isMobile)? 800 : 1000;
@@ -545,7 +557,7 @@ $(function(){
 		if( graphicStage == g){
 		}else if( graphicStage !==g ){
 			graphicStage = g;
-			console.log(g)
+			//console.log(g)
 			$graphic.removeClass("illust-book-layout-animation");
 			if(g < 0){
 			
@@ -588,6 +600,11 @@ $(function(){
 
 
 	});
+
+	$(".crevasse-scroll").on("touchstart", function(){
+		$(".sliding-gif").hide();
+	});
+
 			
 });
 
