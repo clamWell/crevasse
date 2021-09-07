@@ -694,7 +694,7 @@ h2.metro-select-title .jump { display:block; }
 .crevasse-svg { margin: 20px 0; margin-bottom: 0; position: relative; left: 0; box-sizing: border-box; padding-left: 70px;}
 .crevasse-svg-holder {  width: 920px;  }
 .crevasse-svg-holder h4 {  text-align: left; margin-bottom: 50px; box-sizing: border-box; width: 100%; -webkit-text-size-adjust:100%;
-padding-left: 15px;border-left: 3px solid #494949; margin-left: 20px; line-height: 1; font-size: 14px !important;font-size: small;}
+padding-left: 15px;border-left: 3px solid #494949; margin-left: 20px; line-height: 1; font-size: 14px !important;}
 .crevasse-scroll {width: 100%; overflow-x: scroll;  overflow-y: hidden; position: relative;}
 .crevasse-svg .desc-text { font-size: 11px; }
 .crevasse-svg .defalut-text { font-size: 11px;}
