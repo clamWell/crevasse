@@ -84,6 +84,22 @@ $(function(){
 	};
 		
 	var count_accident;
+	function countAccident(stationId) {
+		count_accident = 0;
+		station_info.forEach(function(v,i,a){
+			if(v.id == stationId ) {
+				for (var key in v["entrances_up"]) { 
+					count_accident += v["entrances_up"][key]["accidents"];
+				}
+				for (var key in v["entrances_down"]) { 
+					count_accident += v["entrances_down"][key]["accidents"];
+				}
+			}
+			
+		});
+		return count_accident;
+	}
+
     function makePath(line){
         var line = line || 1;
        // console.log(line + "호선 그리기")
@@ -187,6 +203,8 @@ $(function(){
         var station_holder= document.getElementById(svgId).appendChild(document.createElementNS("http://www.w3.org/2000/svg", "g"));
         station_holder.setAttributeNS(null,"class", "station-holder");
         station_holder.setAttributeNS(null,"transform", "translate(150, 50)");
+
+		
         for(d=0;d<st_data.length;d++){
 			 var stationStr= st_data[d];
 			 var code = getStationCode(line, stationStr);
@@ -199,6 +217,9 @@ $(function(){
              var templabel= tempGroup.appendChild(document.createElementNS("http://www.w3.org/2000/svg", "text"));
              templabel.innerHTML = stationStr;
 			 templabel.setAttributeNS(null,"transform", "translate(0, -12)");
+			 if (countAccident(code) >= 5) {
+				templabel.setAttributeNS(null,"fill", "#fe583f");
+			}
         }
 		
 		$(".station-group").each( function(v,i,a){
@@ -482,6 +503,7 @@ $(function(){
 					
 					// 개별 역 정보 입력
 					$(".station-name").html(v.station);
+					
 					/*
                     var onlyyear = String(v.year).slice(0,4);
                     $(".detail-year").html(onlyyear + "년");
@@ -584,11 +606,11 @@ $(function(){
 		var n;
 		if( n < $gStagePoint.eq(0).position().top){ 
 			adjustStage(-1); //이전
- 		}else if( n >= $gStagePoint.eq($gStagePoint.length-1).position().top ){
+ 		}else if( n >= $gStagePoint.eq($gStagePoint.length-1).position().top +120 ){
 			adjustStage($gStagePoint.length);
-		}else if( n >= $gStagePoint.eq(0).position().top && n < $gStagePoint.eq($gStagePoint.length-1).position().top){
+		}else if( n >= $gStagePoint.eq(0).position().top && n < $gStagePoint.eq($gStagePoint.length-1).position().top +120){
 			for(g=0;g<$gStagePoint.length-1;g++){
-				if( n >= $gStagePoint.eq(g).position().top && n <$gStagePoint.eq(g+1).position().top){
+				if( n >= $gStagePoint.eq(g).position().top && n <$gStagePoint.eq(g+1).position().top +120){
 					adjustStage(g+1);
 				}
 			}
@@ -617,7 +639,6 @@ $(function(){
 		$(".sliding-gif").hide();
 	});
 
-			
 });
 
 function sendSns(s) {

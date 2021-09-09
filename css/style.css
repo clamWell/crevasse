@@ -376,6 +376,7 @@ background: linear-gradient(0deg, rgba(255,255,255,0), rgba(255,255,255,1));}
 .st-line-8 .station-circle { stroke: #e9506f; }
 .st-line-9 .station-circle { stroke: #c49b26;}
 
+.metro-guide {color: #fe583f; font-size: 12px; text-align: right; margin-top: 5px;}
 .station-info-holder { width: 100%;  box-sizing: border-box;  padding-top:30px; padding-bottom: 50px; display:none;max-width: 1300px;margin: 0 auto; background: #f4f4f4;}
 .station-info {margin: 0 auto; position: relative;}
 .name-holder {text-align: center;}
@@ -666,7 +667,7 @@ body.scrollOff{position:fixed;overflow:hidden;height:100%;}
 
 /****** YJ 모바일추가 ********/
 .path-draw-canvas { display:none; }
-.metro-btn {  position: relative; top: 0; left: 0; margin-left: 0;}
+.metro-btn {  position: relative; top: 0; left: 0; margin-left: 0; }
 h2.metro-select-title {text-align: left;  font-size: 20px; width: 100%; box-sizing: border-box; padding: 0px 15px;}
 h2.metro-select-title .jump { display:block; }
 
@@ -684,7 +685,6 @@ h2.metro-select-title .jump { display:block; }
 .metro-btn ul .btn_line_8 { border: 2px solid #e9506f; }
 .metro-btn ul .btn_line_9 { border: 2px solid #c49b26;}
 .metro-btn ul li:hover { box-shadow: auto; }
-
 
 .name-holder h2.station-name { font-size: 24px; }
 .station-info-holder { padding-top:20px; }
@@ -739,8 +739,8 @@ padding-left: 15px;border-left: 3px solid #494949; margin-left: 20px; line-heigh
 .intro-graphic-holder .platform .platform-body .human-foot {width: 150px; margin-left: -80px;}
 .story-title .title-background {min-height: 300px;}
 .title-text .page-main-title { width: 100%;}
-.title-text .page-main-title img { width: 95%;    width: 356px;}
-.title-text .page-main-title .title-falling { right: 85px;}
+.title-text .page-main-title img { width: 95%;}
+.title-text .page-main-title .title-falling { right: 23%;}
 .title-text .page-main-title .title-falling img { width: 65px;}
 .title-text .page-sub-title{ margin-top: 10px; font-size: 16px;}
 .story-title { margin-bottom: 70px;}
