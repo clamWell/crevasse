@@ -470,7 +470,7 @@ border-top: 4px double #111;border-bottom: 4px double #111;  border-top: 3px sol
 .img-holder-col-2 .col-holder {position: relative; width:100%; }
 .img-holder-col-2 .col-holder > img { float:left; width: 48%; margin: 0 1%; border-radius: 10px;  }
 .img-holder-col-2 .col-holder::after { clear:both; content:""; display:block; }
-.img-holder-col-2 .caption {text-align: left;opacity: 0.5;width: 100%; }
+.img-holder-col-2 .caption {opacity: 0.5;width: 100%; }
 
 .graph--pie { max-width: 1000px; margin: 0 auto;  text-align: center; }
 .graph--pie > img {max-width: 400px; }
