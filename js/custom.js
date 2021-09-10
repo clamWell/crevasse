@@ -535,7 +535,7 @@ $(function(){
 
 				if(dir =="UP"){
 					$(".crevasse-svg-holder-up .tooltip").show();
-					$(".crevasse-svg-holder-up .tooltip").css({"left": ($(this).attr("cx")+150)+"px"});
+					$(".crevasse-svg-holder-up .tooltip").css({"left": ( Number($(this).attr("cx"))+20)+"px"});
 					$(".each-platform-dis .number").html(number);
 					$(".each-platform-dis .distance").html(nowStationData["entrances_up"][number]["distance(mm)"]+"mm");
 					/*
@@ -544,7 +544,7 @@ $(function(){
 					*/
 				}else{
 					$(".crevasse-svg-holder-down .tooltip").show();
-					$(".crevasse-svg-holder-down .tooltip").css({"left": ($(this).attr("cx")+150)+"px"});
+					$(".crevasse-svg-holder-down .tooltip").css({"left": (Number($(this).attr("cx"))+20)+"px"});
 					$(".each-platform-dis .number").html(number);
 					$(".each-platform-dis .distance").html(nowStationData["entrances_down"][number]["distance(mm)"]+"mm");
 					/*
@@ -603,7 +603,7 @@ $(function(){
 
 	function checkGraphicStage(n){
 		var $gStagePoint = $(".illust-book-layout");
-		var n;
+		var n = n - screenHeight*0.5;
 		if( n < $gStagePoint.eq(0).position().top){ 
 			adjustStage(-1); //이전
  		}else if( n >= $gStagePoint.eq($gStagePoint.length-1).position().top +120 ){
