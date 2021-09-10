@@ -497,10 +497,11 @@ span.count {color: #008a21; font-weight: bold;background: #f0f0f0;border-radius:
 .pie-graphic-area .col-2-wrap { width:100%; max-width: 1000px; margin: 0 auto; position:relative; margin-bottom: 50px;}
 .pie-graphic-area .col-2-wrap .img-col { float:left; width:50%; max-width: 450px; box-sizing:border-box; padding-right: 50px; }
 .pie-graphic-area .col-2-wrap .img-col > img { width:100%; }
-.pie-graphic-area .col-2-wrap .text-col {  float:left; width:50%; }
+.pie-graphic-area .col-2-wrap .text-col {  float:left; width:50%; box-sizing: border-box; padding-top: 100px;}
 .pie-graphic-area .col-2-wrap::after {clear:both; content:""; display:block; }
 .pie-graphic-area .col-2-wrap .text-col > p {font-size: 20px;  max-width: 550px; text-align: left; color: #222; margin: 20px auto; line-height: 1.7; letter-spacing: -0.3px;word-break: keep-all; 
- font-family: 'Noto Serif KR', 'notokr-regular'; font-weight: bold;box-sizing: border-box; padding-top: 100px;}
+ font-family: 'Noto Serif KR', 'notokr-regular'; }
+.pie-graphic-area .col-2-wrap .text-col > p .semi {font-size: 15px;opacity: 0.7;}
 
 .metro-area {   margin: 50px auto;  box-sizing: border-box; padding: 10px 0; width: 100%; background: #d4e1d5;}
 .position-time-holder {margin: 30px auto; position: relative;width: 500px;}
@@ -816,8 +817,8 @@ padding-left: 15px;border-left: 3px solid #494949; margin-left: 20px; line-heigh
 .pie-common-title {font-size: 18px;box-sizing: border-box; padding: 0px 20px; word-break: keep-all;}
 .pie-graphic-area .col-2-wrap .img-col { width: 100%; float:none; padding: 0;}
 .pie-graphic-area .col-2-wrap .img-col img {    width: 280px; margin: 0 auto; display: block;}
-.pie-graphic-area .col-2-wrap .text-col { width: 100%; float:none; }
-.pie-graphic-area .col-2-wrap .text-col > p { padding-top: 0; font-size: 16.5px;  box-sizing: border-box; padding: 0px 10px; word-break: break-all;}
+.pie-graphic-area .col-2-wrap .text-col { width: 100%; float:none;padding-top: 0;  }
+.pie-graphic-area .col-2-wrap .text-col > p { font-size: 16.5px;  box-sizing: border-box; padding: 0px 10px; word-break: break-all;}
 .metro-guide {text-align: left;width: 100%;box-sizing: border-box; padding: 0px 15px;}
 .guide-02 { display:none;}
 .bottom-byline { margin-top:0;}
