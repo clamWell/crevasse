@@ -1,7 +1,7 @@
 var ieTest = false,
 	screenWidth = $(window).width(),
 	screenHeight = $(window).height(),
-	imgURL = "http://img.khan.co.kr/spko/storytelling/2021/network/",
+	imgURL = "http://img.khan.co.kr/spko/storytelling/2021/crevasse/",
 	isMobile = screenWidth <= 800 && true || false,
 	isNotebook = (screenWidth <= 1300 && screenHeight < 750) && true || false,
 	isMobileLandscape = ( screenWidth > 400 && screenWidth <= 800 && screenHeight < 450 ) && true || false;

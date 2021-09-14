@@ -576,6 +576,9 @@ font-family: 'Noto Sans KR', 'Apple SD Gothic Neo','맑은 고딕', Malgun Gothi
 .sliding-gif {display:none;}
 .hideme { opacity:0; }
 
+.twentytwenty-handle { width: 60px; height:50px; }
+.twentytwenty-horizontal .twentytwenty-handle:before{margin-bottom: 30px;}
+.twentytwenty-horizontal .twentytwenty-handle:after {margin-top: 30px;}
 
 /** fixed Navi **/
 .fixed-navi {position: fixed; right: 10px;top: 50%;margin-top: -250px; right: -200px;
@@ -764,9 +767,9 @@ padding-left: 15px;border-left: 3px solid #494949; margin-left: 20px; line-heigh
 .foot-right img {width: 55px;}
 .intro-graphic-holder .platform .platform-body .human-foot {width: 150px; margin-left: -80px;}
 .story-title .title-background {min-height: 300px;    margin-bottom: 30px;}
-.title-text .page-main-title { width: 100%;}
+.title-text .page-main-title { width: 100%; width: 352px; }
 .title-text .page-main-title img { width: 95%;width: 352px;}
-.title-text .page-main-title .title-falling { right: 23%;}
+.title-text .page-main-title .title-falling { right: 76px; }
 .title-text .page-main-title .title-falling img { width: 65px;}
 .title-text .page-sub-title{ margin-top: 10px; font-size: 16px;}
 .story-title { margin-bottom: 10px;}
@@ -776,12 +779,10 @@ padding-left: 15px;border-left: 3px solid #494949; margin-left: 20px; line-heigh
 .illust-book-layout .col-2 .col-illust img { height: 100%; width: 100%;}
 .illust-book-layout .col-2 .col-illust .illust-holder { border-radius: 0%;}
 .illust-book-layout .col-2 .col-illust .story01 .person img { height: 250px;}
-.illust-book-layout .col-2 .col-illust .story03 .wheel img { width: 62%;}
-
-
 
 .layout-blackThem {  background: #030000; box-sizing: border-box; padding: 20px 0px; }
-.story03 .wheel {top: 60px; right: -2px;}
+.story03 .wheel {width: 45%; right: auto; left: 32%; top: 22%;}
+.story03 .wheel img {  width:100%; }
 #S01_03 img {border: none;}
 .img-holder .graphic-title { font-size: 18px;}
 .tt-silder-des { font-size: 13px;}
@@ -813,6 +814,7 @@ padding-left: 15px;border-left: 3px solid #494949; margin-left: 20px; line-heigh
 #S03_02 img {border-radius: 0;}
 /*수민 여기까지*/
 
+#S01_05 {display:none;}
 
 .pie-common-title {font-size: 18px;box-sizing: border-box; padding: 0px 20px; word-break: keep-all;}
 .pie-graphic-area .col-2-wrap .img-col { width: 100%; float:none; padding: 0;}
