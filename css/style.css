@@ -393,11 +393,22 @@ span.icon-alert img { width: 14px;    vertical-align: middle; }
 .metro-guide span.icon-alert img  { width: 12px; }
 .metro-guide span.red { color: #fe583f; font-weight: bold; }
 
+
 .station-info-holder { width: 100%;  box-sizing: border-box;  padding-top:30px; padding-bottom: 50px; display:none;max-width: 1300px;margin: 0 auto; background: #f4f4f4;}
 .station-info {margin: 0 auto; position: relative;}
 .name-holder {text-align: center;}
 .name-holder  h2.station-name {  font-size: 28px; line-height: 1; font-weight: 800; color: #303037; }
 
+.btn-holder .click-animation { position: absolute; width: 36px; top: 20px; left:50px; }
+.btn-holder .click-animation img { width:100%; border-radius:none; box-shadow:none;  position: relative; left:0; }
+.btn-holder .click-animation img.ani {animation: click 1s cubic-bezier(0.37,0.01,0.55,0.99) infinite alternate;}
+.btn-holder .click-animation p { font-size: 12px; font-weight:bold; position: absolute; width: 75px;}
+@keyframes click {
+	0% { opacity: 0.8; left: 20px;}
+	100% {opacity: 1;left:0px;}
+}
+
+#path-start-deco { top: -200px; opacity: 0;}
 
 .station-para {padding: 20px; background-color: white;}
 .station-distance {text-align: center; }
@@ -777,6 +788,9 @@ padding-left: 15px;border-left: 3px solid #494949; margin-left: 20px; line-heigh
 
 /****** YJ 모바일추가  *********/
 
+
+.btn-holder .click-animation {left: 280px; }
+.btn-holder .click-animation p { display:none; }
 
 /*수민 추가*/
 .sec-title .numb {font-size: 60px;line-height: 90px;}
