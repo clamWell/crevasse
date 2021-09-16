@@ -599,6 +599,25 @@ font-family: 'Noto Sans KR', 'notokr-regular', 'Apple SD Gothic Neo','맑은 고
 
 /** fixed Navi **/
 
+.rel-article {  padding: 30px 0px; }
+.rel-article .rel-box { width:100%; max-width: 650px; margin: 0 auto;   border: 1px solid #d2d1d6; border-bottom: 4px solid #222;}
+.rel-article .rel-box-2 {   margin: 20px auto;}
+.rel-article .rel-box-2 .rel-art-list { padding: 10px; }
+.rel-article .rel-box .thumb { width:100%; position: relative; height: auto; height:200px; overflow:hidden; }
+.rel-article .rel-box .thumb a { width:100%; display:block; }
+.rel-article .rel-box .thumb img { width:100%; position: relative; top:-120px; }
+.rel-article .rel-box .thumb .project-name { position: absolute; top: 10px; left:10px; background: #222;color:#fff;border-radius:2px; font-weight: bold; 
+ font-size: 16px; line-height:18px; padding: 8px 15px;text-align:center; color: #ddd; display: inline-block; }
+.rel-article .rel-box .rel-art-list { width:100%; box-sizing: border-box; padding: 20px 15px;position: relative;  }
+.rel-article .rel-box .rel-art-list ul { width:100%; }
+.rel-article .rel-box .rel-art-list ul li { margin: 6px 0px; text-align: center; }
+.rel-article .rel-box .rel-art-list ul li a { text-align:left; color: #555; font-size: 17px; line-height:24px; }
+.rel-article .rel-box .rel-art-list ul li a:hover { text-decoration: underline; }
+.rel-article .rel-box .rel-art-list .more-btn { position: absolute; right: 10px; bottom: 10px; font-size: 14px;
+color: #777;  background: url("http://img.khan.co.kr/spko/storytelling/2018/big/outlink.png") no-repeat; 
+background-size: 15px 15px; padding-right: 20px;background-position: right;  cursor: pointer; opacity:0.7; }
+.rel-article .rel-box .rel-art-list .more-btn:hover { opacity:1; }
+.rel-article h4 { font-size: 16px;font-weight: 500;  text-align: center;margin-bottom: 20px;  margin-top: 20px;}
 
 /*********digital common byline*******/
 .digital-common-byline { width: 100%;  padding-top: 30px;}
@@ -825,6 +844,7 @@ padding-left: 15px;border-left: 3px solid #494949; margin-left: 20px; line-heigh
 .guide-02 { display:none;}
 .bottom-byline { margin-top:0;}
 .rel-article { padding: 20px 15px;  box-sizing: border-box;}
+.rel-article .rel-box .thumb img { top: 0; }
 .rel-article .rel-box { }
 .rel-article .rel-box .rel-art-list { padding: 15px; }
 .rel-article .re.rel-article .rel-box .rel-art-list ul li a {  font-size: 15px; line-height:1.4; }
